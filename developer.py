@@ -23,10 +23,11 @@ def repo_task():
 
 def _admin_task():
     title = 'DEVELOPMENT TASK: '
+
     options = ['git init','commit','start_django server','upload to caprover']
     option, index = pick(options, title, indicator='=>', default_index=0)
+    print(option, index)
     return option, index
-    # print(option, index)
 
 
 
