@@ -26,7 +26,6 @@ def _admin_task():
 
     options = ['git init','commit','start_django server','upload to caprover']
     option, index = pick(options, title, indicator='=>', default_index=0)
-    print(option, index)
     return option, index
 
 
@@ -34,6 +33,8 @@ def _admin_task():
 
 
 option, index = _admin_task()
+print(option, index)
+
 if index == 0:
     repo_option, repo_index = repo_task()
     if repo_index == 0:
