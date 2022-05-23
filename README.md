@@ -1,2 +1,3 @@
-- Do not push your token, lol. It will be void . 
-- a
+- Added scan project script.
+- start django server
+- 
