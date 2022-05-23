@@ -20,6 +20,9 @@ def repo_task():
 
 
 def _admin_task():
+    x_time, o, e = select.select( [sys.stdin], [], [],  3)
+    subprocess.call(['bash', shell_scripts + '/commit_project.sh'])
+
     title = 'AUTO DEPLOYMENT AFTER 3 SECONDS TO GITHUB ...\nDEVELOPMENT TASK: '
 
     options = ['git init','commit']
@@ -38,9 +41,9 @@ def _admin_task():
 
 
 
-x_time, o, e = select.select( [sys.stdin], [], [],  3)
-subprocess.call(['bash', shell_scripts + '/commit_project.sh'])
+# x_time, o, e = select.select( [sys.stdin], [], [],  3)
 option, index = _admin_task()
+# subprocess.call(['bash', shell_scripts + '/commit_project.sh'])
 # if (x_time):
 # else:
 #     print("You")
