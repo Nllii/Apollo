@@ -49,6 +49,8 @@ if index == 0:
         pass
 elif index == 1:
     subprocess.call(['bash', shell_scripts + '/commit_project.sh'])
+elif index == 2:
+    subprocess.call(['bash', shell_scripts + '/start_django.sh'])
 
 
 elif index == 3:
