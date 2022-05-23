@@ -33,7 +33,7 @@ def _admin_task():
 
 
 option, index = _admin_task()
-print(option, index)
+# print(option, index)
 
 if index == 0:
     repo_option, repo_index = repo_task()
