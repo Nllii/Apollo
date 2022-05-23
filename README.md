@@ -1,3 +1,3 @@
-- Added scan project script.
-- start django server
-- 
+- Added commit project
+- Add start django server
+- Added upload_caprover
