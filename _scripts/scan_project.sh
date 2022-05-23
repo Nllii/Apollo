@@ -3,7 +3,6 @@ RED='\033[0;31m'
 END='\033[0m' # No Color
 
 #open file in read mode and read the first line
-cd ..
 read -r account_ < credentials.txt
 token=$account_ 
 token_=${token#*=}
