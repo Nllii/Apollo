@@ -9,5 +9,5 @@ while true; do
         echo "Offline"
         sudo reboot
     fi
-    sleep 1
+    sleep 300
 done
