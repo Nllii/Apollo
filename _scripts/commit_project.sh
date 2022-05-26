@@ -8,7 +8,7 @@ function push_project(){
     git add .
     git commit -m "$1"
     git push
-    echo -e "${IYellow}\nCommit message: $1${END}"
+    echo -e "\n${IYellow}Commit message: $1${END}"
 
 }
 
