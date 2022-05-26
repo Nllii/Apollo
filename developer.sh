@@ -63,16 +63,7 @@ function install_neofetch(){
 
 
 
-function init_developer(){
-  if ! [ -x "$(command -v python)" ]; then
-  echo "install python or setup your server first. Check the script!"
-  else
-  python _developer.py
-  fi
 
-
-
-}
 
 function install_ghCLI(){
   curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | sudo dd of=/usr/share/keyrings/githubcli-archive-keyring.gpg
@@ -80,6 +71,18 @@ function install_ghCLI(){
   sudo apt install gh
   gh auth login
   
+}
+
+
+function init_developer(){
+  if ! [ -x "$(command -v python)" ]; then
+  echo "install python or setup your server first. Check the script! and uncomment the following lines"
+  else
+  python _developer.py
+  fi
+
+
+
 }
 
 init_developer

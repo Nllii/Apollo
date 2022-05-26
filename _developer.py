@@ -6,7 +6,7 @@ shell_scripts= os.path.join(shell_scripts_dir, '_scripts')
 
 def building():
     title = 'BUILDING TASK: '
-    options = ['dokku']
+    options = ['Docker build', 'Docker re - run']
     option, index = pick(options, title, indicator='=>', default_index=0)
     return option, index
 
@@ -14,7 +14,7 @@ def building():
 
 def repo_task():
     title = 'REPO TASK: '
-    options = ['create a new repo and push', 'init dokku']
+    options = ['create a new repo and push']
     option, index = pick(options, title, indicator='=>', default_index=0)
     return option, index
 
@@ -24,7 +24,7 @@ def repo_task():
 def _admin_task():
     title = 'DEVELOPMENT TASK: '
 
-    options = ['git init','commit','start_django server','Upload to dokku']
+    options = ['git init','commit','start_django server','run on Docker']
     option, index = pick(options, title, indicator='=>', default_index=0)
     return option, index
 
@@ -59,7 +59,10 @@ elif index == 2:
 elif index == 3:
     option, index = building()
     if index == 0:
-        subprocess.call(['bash', shell_scripts + '/upload_caprover.sh'])
+        subprocess.call(['bash', shell_scripts + '/docker_task.sh','build_image'])
+    if index == 1:
+        subprocess.call(['bash', shell_scripts + '/docker_task.sh','run_docker'])
+
 
     
 

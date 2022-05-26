@@ -9,4 +9,3 @@ ENTRYPOINT ["sh","./is_running.sh"]
 
 
 
-
