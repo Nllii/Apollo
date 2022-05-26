@@ -7,7 +7,7 @@ while true; do
         # break
     else
         echo "Offline"
-        sudo reboot
+        # sudo reboot
     fi
-    sleep 300
+    # sleep 300
 done
