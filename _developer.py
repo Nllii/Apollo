@@ -50,7 +50,11 @@ if index == 0:
     else:
         pass
 elif index == 1:
-    subprocess.call(['bash', shell_scripts + '/commit_project.sh'])
+    commit_option = input("Enter commit message: ")
+    # send  commit message to shell script
+    
+    subprocess.call(['bash', shell_scripts + '/commit_project.sh', commit_option])
+    # subprocess.call(['bash', shell_scripts + '/commit_project.sh'commit_option])
 elif index == 2:
     subprocess.call(['bash', shell_scripts + '/start_django.sh'])
 
