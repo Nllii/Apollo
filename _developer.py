@@ -6,7 +6,7 @@ shell_scripts= os.path.join(shell_scripts_dir, '_scripts')
 
 def building():
     title = 'BUILDING TASK: '
-    options = ['upload to caprover']
+    options = ['dokku']
     option, index = pick(options, title, indicator='=>', default_index=0)
     return option, index
 
@@ -14,7 +14,7 @@ def building():
 
 def repo_task():
     title = 'REPO TASK: '
-    options = ['create a new repo and push', 'caprover']
+    options = ['create a new repo and push', 'init dokku']
     option, index = pick(options, title, indicator='=>', default_index=0)
     return option, index
 
@@ -24,7 +24,7 @@ def repo_task():
 def _admin_task():
     title = 'DEVELOPMENT TASK: '
 
-    options = ['git init','commit','start_django server','upload to caprover']
+    options = ['git init','commit','start_django server','Upload to dokku']
     option, index = pick(options, title, indicator='=>', default_index=0)
     return option, index
 
