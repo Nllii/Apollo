@@ -74,6 +74,10 @@ function install_ghCLI(){
 }
 
 
+function install_golang(){
+    sudo apt install golang
+}
+
 function init_developer(){
   if ! [ -x "$(command -v python)" ]; then
   echo "install python or setup your server first. Check the script! and uncomment the following lines"
