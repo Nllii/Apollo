@@ -1,4 +1,3 @@
-
 #!/bin/bash
 
 
@@ -7,6 +6,7 @@ RED='\033[0;31m'
 White="\[\033[0;37m\]"
 END='\033[0m' 
 IYellow="\033[0;93m[x]" 
+
 
 function disableSudoPassword() {
     getUsername=$(whoami)
