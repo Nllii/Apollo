@@ -1,6 +1,10 @@
 from pick import pick
 import os
 import subprocess
+#import time 
+
+
+
 shell_scripts_dir = os.path.dirname(os.path.abspath(__file__))
 shell_scripts= os.path.join(shell_scripts_dir, '_scripts')
 
