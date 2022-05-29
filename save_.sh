@@ -60,7 +60,7 @@ if [ "$selected_choice" == "1. git commit" ]; then
 fi
 
 if [ "$selected_choice" == "2. git init" ]; then
-    echo -e "${White} - !git init -${END}"
+    echo -e "${White} - git init -${END}"
     cd ./workflow/_scripts/
     bash init_project.sh
     

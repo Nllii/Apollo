@@ -47,7 +47,6 @@ function install_cockpit(){
     sudo apt install cockpit-machines -y
 
 
-
 }
 
 function install_python(){
