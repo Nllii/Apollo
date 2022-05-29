@@ -1,0 +1,46 @@
+#!/bin/bash
+# check for folder called workflow 
+set -e 
+RED='\033[0;31m'
+White="\[\033[0;37m\]"
+END='\033[0m' 
+IYellow="\033[0;93m[x]" 
+project_name=$(basename $(pwd))
+echo $project_name
+# script_folder=$(dirname $(readlink -f $0))
+# echo $script_folder
+
+# if in home directory and folder called workflow exists 
+# check to see where the command is comming from 
+
+if [ ! -d "workflow" ]; then
+    echo -e "${IYellow}===> Copying workflow folder to your project.${END}"
+    cp -r $HOME/workflow ~/$project_name
+    echo -e "searching for .gitignore file"
+    if [ -f ".gitignore" ]; then
+        echo -e "found .gitignore file"
+        echo -e "adding workflow folder to .gitignore"
+        echo "workflow" >> .gitignore
+    else
+        echo -e "no .gitignore file found"
+        echo -e "creating .gitignore file"
+        touch .gitignore
+        echo "workflow" >> .gitignore
+    fi
+        # echo -e "workflow folder added to .gitignore"
+fi
+
+
+
+
+if [ "$(pwd)" == "/home/ubuntu" ] && [ -d "workflow" ]; then
+    echo -e "${RED}You are in the home directory and the folder called workflow exists.${END}" 
+    echo -e "${RED}move to a project folder and call - dev - again.${END}"
+    else
+    if [ ! -d "$project_name/workflow" ]; then
+        echo -e "${IYellow} - found workflow folder in PROJECT:$project_name -${END}"
+        bash developer.sh
+    fi
+fi
+
+

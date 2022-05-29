@@ -5,8 +5,14 @@
 - Added Portainer
 - Added github support
 - Add golang 
+- Add mosquitto docker support 
 
 
+Installing. 
+1. git clone repo 
+2. cd workflow 
+3. add the command dev to your path. 
+4. 
 
 
 

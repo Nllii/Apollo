@@ -3,7 +3,7 @@ White="\[\033[0;37m\]"
 END='\033[0m' 
 IYellow="\033[0;93m[x]" 
 
-function push_project(){
+push_project(){
     echo -e "${IYellow}Pushing project commit: \n$1${END}"
     git add .
     git commit -m "$1"
@@ -12,4 +12,4 @@ function push_project(){
 
 }
 
-push_project "$1"
+push_project"$1"
