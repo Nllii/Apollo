@@ -1,0 +1,14 @@
+version: "3.8"
+services:
+  web:
+    build: .
+    restart: always
+    container_name: "spikecodes/libreddit:arm."
+    ports:
+      - 8080:8080
+    healthcheck:
+      test: ["CMD", "wget", "--spider", "-q", "--tries=1", "http://localhost:8080/settings"]
+      interval: 5m
+      timeout: 3s
+docker pull spikecodes/libreddit:arm
+docker run -d --name libreddit -p 80:8080 spikecodes/libreddit

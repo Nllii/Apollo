@@ -19,7 +19,7 @@ def server_setup():
 
 def docker_task():
     title = 'DOCKER TASK: '
-    options = ['docker build', 'Docker re - run']
+    options = ['docker build && run', 'docker compose up']
     option, index = pick(options, title, indicator='=>', default_index=0)
     return option, index
 
@@ -53,45 +53,27 @@ if index == 0:
     else:
         pass
 
-elif index == 1:
-    docker_option, docker_index = docker_task()
-    if docker_index == 0:
-        subprocess.call(['bash', shell_scripts + '/docker-build.sh', '-build'])
 
-        
 
-    
-    
-    
-    
+# elif index == 1:
+#     docker_option, docker_index = docker_task()
+#     if docker_index == 0:
+#         subprocess.call(['bash', shell_scripts + '/docker-build.sh', '-build'])
+#     elif docker_index == 1:
+#         subprocess.call(['bash', shell_scripts + '/docker-build.sh', '-compose-build'])
+
     
     # server_option, server_index = server_setup()
+    # print(server_index)
     # if server_index == 0:
     #     subprocess.call(['bash', shell_scripts + '/setup-server.sh', '-everything'])
 
-
-#     elif index == 2:
-#         subprocess.call(['bash', shell_scripts + '/start_django.sh'])
-#     else:
-#         pass
-
-#     if repo_index == 3:
-#         subprocess.call(['bash', shell_scripts + '/upload_caprover.sh'])
-#     else:
-#         pass
-# elif index == 1:
-#     commit_option = input("Enter commit message: ")
-#     subprocess.call(['bash', shell_scripts + '/commit_project.sh', commit_option])
-# elif index == 2:
-#     subprocess.call(['bash', shell_scripts + '/start_django.sh'])
+    
+    
+    
+    
 
 
-# elif index == 3:
-#     option, index = building()
-#     if index == 0:
-#         subprocess.call(['bash', shell_scripts + '/docker_task.sh','build_image'])
-#     if index == 1:
-#         subprocess.call(['bash', shell_scripts + '/docker_task.sh','run_docker'])
 
 
     

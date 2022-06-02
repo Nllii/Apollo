@@ -81,6 +81,12 @@ function install_portainer(){
 
 }
 
+function libreddit(){
+    
+    sudo docker pull spikecodes/libreddit:arm
+    sudo docker run  -d --name libreddit -p 80:8081 spikecodes/libreddit:arm
+}
+
 if [ $1 == "-everything" ]; then 
     echo -e "${Yellow}- installing everything -${END}"
     # sudo apt update && sudo apt upgrade -y
@@ -92,6 +98,8 @@ if [ $1 == "-everything" ]; then
     # install_docker
     # install_portainer
     # install_mosquitto
+    libreddit
+    
     
 fi
 

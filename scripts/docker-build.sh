@@ -8,15 +8,15 @@ Yellow="\033[0;93m[x]"
 workflow_path=$(pwd)
 
 
-run_docker(){
-    echo -e "${Yellow_task} ***** Re-runing docker image*******${END}"
-    echo -e "${Yellow_task} STOPING: ${project_name}${END}"
-    contain_id=$(sudo docker ps | grep $project_name | awk '{print $1}')
-    sudo docker stop "$contain_id"
-    echo -e "${Yellow_task} BUILDING: ${project_name}${END}"
-    sudo docker build --tag $project_name .
-    sudo docker run -d $project_name
-}
+# run_docker(){
+#     echo -e "${Yellow_task} ***** Re-runing docker image*******${END}"
+#     echo -e "${Yellow_task} STOPING: ${project_name}${END}"
+#     contain_id=$(sudo docker ps | grep $project_name | awk '{print $1}')
+#     sudo docker stop "$contain_id"
+#     echo -e "${Yellow_task} BUILDING: ${project_name}${END}"
+#     sudo docker build --tag $project_name .
+#     sudo docker run -d $project_name
+# }
 
 
 
@@ -29,9 +29,19 @@ if [ $1 == "-build" ]; then
     echo -e "${Yellow_task}Building docker image ${project_name}${END}"
     sudo docker build --tag $project_name .
     sudo docker run -d $project_name
+# docker build -f Dockerfile.arm .
 
 fi
+if [ $1 == "-compose-build" ]; then 
+    project_name=$(git config --get remote.origin.url | sed 's/.*\/\(.*\)\.git/\1/')
+    if ! [ -f $workflow_path/"docker-compose.yml" ]; then
+        echo -e "${RED}No docker-compose.yml found.${END}"
+        exit 1
+    fi
+    echo -e "${Yellow_task}docker compose ${project_name}${END}"
+    sudo docker-compose up -d
 
+fi 
 
 
 
