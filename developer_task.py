@@ -56,7 +56,7 @@ if index == 0:
 elif index == 1:
     server_option, server_index = server_setup()
     if server_index == 0:
-        subprocess.call(['bash', shell_scripts + '/setup-server.sh', '-i'])
+        subprocess.call(['bash', shell_scripts + '/setup-server.sh', '-everything'])
 
 
 #     elif index == 2:

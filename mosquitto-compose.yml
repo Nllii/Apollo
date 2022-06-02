@@ -1,0 +1,11 @@
+version: "3.9"
+services:
+  mosquitto:
+    image: eclipse-mosquitto
+    container_name: mosquitto
+    volumes:
+      - ./mosquitto_mqtt:/mosquitto
+    ports:
+      - 1883:1883
+      - 9001:9001
+      
