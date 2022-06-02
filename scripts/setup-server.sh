@@ -91,7 +91,7 @@ if [ $1 == "-everything" ]; then
     # install_golang
     # install_docker
     # install_portainer
-    install_mosquitto
+    # install_mosquitto
     
 fi
 

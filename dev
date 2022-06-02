@@ -8,6 +8,7 @@ Yellow="\033[0;93m[x]"
 
 # set -x
 # check if python is installed
+workflow_path=$(pwd)
 
 function install_python(){
     echo -e "${Yellow}Installing Conda for python management${END}"
@@ -18,21 +19,15 @@ function install_python(){
     
 }
 
-workflow_path=$(pwd)
-# echo $workflow_path
+
 if [ -x "$(command -v dev)" ]; then
-    echo -e "${Yellow} - developer task ${END}"
-    python "developer_task.py"
-
-
-
-
-else
-    echo -e "${Yellow}dev is not installed${END}"
-    # install_python
+    if [ "$workflow_path" == "$HOME" ]; then
+        echo -e "${RED} - can't call in home ${END}"
+        else
+        echo -e "${Yellow} - calling dev in folder: $workflow_path ${END}"
+        python $HOME/workflow/developer_task.py
+    fi
 fi
-
-
 
 if ! [ -x "$(command -v python)" ]; then
     echo -e "${RED}Error: python is not installed or not in your path. ${END}" >&2
