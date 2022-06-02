@@ -17,9 +17,9 @@ def server_setup():
 
 
 
-def building():
-    title = 'BUILDING TASK: '
-    options = ['Docker build', 'Docker re - run']
+def docker_task():
+    title = 'DOCKER TASK: '
+    options = ['docker build', 'Docker re - run']
     option, index = pick(options, title, indicator='=>', default_index=0)
     return option, index
 
@@ -38,7 +38,7 @@ def repo_task():
 
 def _admin_task():
     title = 'DEVELOPMENT TASK: '
-    options = ['git','server-setup']
+    options = ['git','docker','server-setup']
     option, index = pick(options, title, indicator='=>', default_index=0)
     return option, index
 
@@ -54,9 +54,20 @@ if index == 0:
         pass
 
 elif index == 1:
-    server_option, server_index = server_setup()
-    if server_index == 0:
-        subprocess.call(['bash', shell_scripts + '/setup-server.sh', '-everything'])
+    docker_option, docker_index = docker_task()
+    if docker_index == 0:
+        subprocess.call(['bash', shell_scripts + '/docker-build.sh', '-build'])
+
+        
+
+    
+    
+    
+    
+    
+    # server_option, server_index = server_setup()
+    # if server_index == 0:
+    #     subprocess.call(['bash', shell_scripts + '/setup-server.sh', '-everything'])
 
 
 #     elif index == 2:

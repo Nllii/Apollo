@@ -22,7 +22,7 @@ function install_python(){
 
 if [ -x "$(command -v dev)" ]; then
     if [ "$workflow_path" == "$HOME" ]; then
-        echo -e "${RED} - can't call in home ${END}"
+        echo -e "${RED} - can't dev command call in home ${END}"
         else
         echo -e "${Yellow} - calling dev in folder: $workflow_path ${END}"
         python $HOME/workflow/developer_task.py
