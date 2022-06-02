@@ -9,10 +9,7 @@ This script doesn't use /usr or /opt or /bin to prevent root calling some projec
 
 
 
-## how to use :
-```bash 
-dev 
-```
+
 ```bash 
 git clone https://github.com/Nllii/workflow.git
 cd workflow
@@ -31,7 +28,12 @@ cd workflow
 bash install-workflow.sh
 logout and login again 
 
+```
 
+## how to use :
+```bash 
+call dev in terminal 
+(base) ubuntu@ubuntu: dev
 ```
 
 
