@@ -8,7 +8,11 @@ shell_scripts= os.path.join(shell_scripts_dir, 'scripts')
 
 def server_setup():
     title = 'SERVER SETUP TASK: '
-    options = ['install everything']
+    options = ['install everything'
+               'install git cli',
+               'install docker',
+
+               ]
     option, index = pick(options, title, indicator='=>', default_index=0)
     return option, index
     
@@ -48,13 +52,13 @@ if index == 0:
     if git_index == 0:
         ask_input = input('Enter commit message: ')
         subprocess.call(['bash', shell_scripts + '/git_commit.sh', str(ask_input)])
-
-        
+    else:
+        pass
     
 
-    # server_option, server_index = server_setup()
-    # if server_index == 0:
-    #     subprocess.call(['bash', shell_scripts + '/setup.sh'])
+    server_option, server_index = server_setup()
+    if server_index == 0:
+        subprocess.call(['bash', shell_scripts + '/setup.sh'])
     
 #     elif index == 2:
 #         subprocess.call(['bash', shell_scripts + '/start_django.sh'])
