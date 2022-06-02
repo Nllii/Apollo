@@ -1,0 +1,57 @@
+#!/bin/bash
+# set -e
+
+RED='\033[0;31m'
+White="\[\033[0;37m\]"
+END='\033[0m' 
+Yellow="\033[0;93m[x]" 
+
+# set -x
+# check if python is installed
+
+function install_python(){
+    echo -e "${Yellow}Installing Conda for python management${END}"
+    cd ~/
+    # curl -L -O "https://github.com/conda-forge/miniforge/releases/latest/download/Mambaforge-$(uname)-$(uname -m).sh"
+    bash Mambaforge-$(uname)-$(uname -m).sh 
+    echo "logout and login again to use"
+    
+}
+
+workflow_path=$(pwd)
+# echo $workflow_path
+if [ -x "$(command -v dev)" ]; then
+    echo -e "${Yellow} - developer task ${END}"
+    python "developer_task.py"
+
+
+
+
+else
+    echo -e "${Yellow}dev is not installed${END}"
+    # install_python
+fi
+
+
+
+if ! [ -x "$(command -v python)" ]; then
+    echo -e "${RED}Error: python is not installed or not in your path. ${END}" >&2
+    # install_python
+    if ! [ -x "$(command -v conda activate )" ]; then
+        echo "found python but not conda i will init it for you"
+        # install_python
+    else
+        echo -e "${Yellow}Conda is installed and ready to use.${END}"
+        # source activate 
+        conda activate dev
+        # exec conda activate base
+        # conda init bash
+        
+        # conda create -n dev python=3.9 -y && conda activate dev
+
+
+  fi
+
+  
+fi
+
