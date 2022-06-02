@@ -29,9 +29,8 @@ if [ $1 == "-build" ]; then
     echo -e "${Yellow_task}Building docker image ${project_name}${END}"
     sudo docker build --tag $project_name .
     sudo docker run -d $project_name
-# docker build -f Dockerfile.arm .
-
 fi
+
 if [ $1 == "-compose-build" ]; then 
     project_name=$(git config --get remote.origin.url | sed 's/.*\/\(.*\)\.git/\1/')
     if ! [ -f $workflow_path/"docker-compose.yml" ]; then
