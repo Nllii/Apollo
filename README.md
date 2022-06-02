@@ -1,9 +1,17 @@
-# Workflow is a small script to help server a Raspberry pi  for  developement running ubuntu 22.04 
+###  Workflow is a small script for setup a  Raspberry pi server  for developement running ubuntu 22.04  
 TESTED on ubuntu 22.04 
 
 ## how to use:
 You can manually just set the path to the workflow folder.
-- 
+
+```bash 
+    echo "export PATH=\$PATH:$(pwd)" >> ~/.bashrc
+        chmod +x dev
+        echo "reloading bashrc ..."
+        source ~/.bashrc
+```
+
+
 
 
 
