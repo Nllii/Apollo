@@ -53,20 +53,21 @@ if index == 0:
     else:
         pass
 
+elif index == 1:
+    docker_option, docker_index = docker_task()
+    if docker_index == 0:
+        subprocess.call(['bash', shell_scripts + '/docker-build.sh', '-build'])
+    elif docker_index == 1:
+        subprocess.call(['bash', shell_scripts + '/docker-build.sh', '-compose-build'])
 
 
-# elif index == 1:
-#     docker_option, docker_index = docker_task()
-#     if docker_index == 0:
-#         subprocess.call(['bash', shell_scripts + '/docker-build.sh', '-build'])
-#     elif docker_index == 1:
-#         subprocess.call(['bash', shell_scripts + '/docker-build.sh', '-compose-build'])
 
-    
-    # server_option, server_index = server_setup()
-    # print(server_index)
-    # if server_index == 0:
-    #     subprocess.call(['bash', shell_scripts + '/setup-server.sh', '-everything'])
+
+elif index == 2:
+    server_option, server_index = server_setup()
+    print(server_index)
+    if server_index == 0:
+        subprocess.call(['bash', shell_scripts + '/setup-server.sh', '-everything'])
 
     
     

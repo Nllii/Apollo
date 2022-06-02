@@ -27,8 +27,17 @@ if [ $1 == "-build" ]; then
         exit 1
     fi
     echo -e "${Yellow_task}Building docker image ${project_name}${END}"
-    sudo docker build --tag $project_name .
-    sudo docker run -d $project_name
+    read -p "Dockerfile name or : " dockerfile_name
+    if [ -z "$dockerfile_name" ]; then
+        dockerfile_name="Dockerfile"
+    fi
+
+    # sudo docker build --tag $project_name .
+
+    # docker build -f Dockerfile.arm .
+
+    # sudo docker build --tag $project_name .
+    # sudo docker run -d $project_name
 fi
 
 if [ $1 == "-compose-build" ]; then 
