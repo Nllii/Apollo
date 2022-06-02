@@ -5,6 +5,8 @@ TESTED on ubuntu 22.04
 You can manually just set the path to the workflow folder.
 
 ```bash 
+git clone https://github.com/Nllii/workflow.git
+cd workflow
 echo "export PATH=\$PATH:$(pwd)" >> ~/.bashrc
 chmod +x dev
 echo "reloading bashrc ..."
