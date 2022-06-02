@@ -1,12 +1,15 @@
 ###  Workflow is a script to setup a Raspberry pi as a server for developement running ubuntu 22.04. Basic minimal setup.
 TESTED on ubuntu 22.04 
 
+experienced linux users:
+You can manually just set the path to the workflow folder.
+and call this command dev, test its in tmux, to uninstall, just delete the path and the project folder. 
+This script doesn't use /usr or /opt or /bin to prevent root calling some project path in your home.
+
 
 
 
 ## how to use :
-You can manually just set the path to the workflow folder.
-and call 
 ```bash 
 dev 
 ```
