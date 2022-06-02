@@ -55,8 +55,9 @@ if index == 0:
 
 elif index == 1:
     server_option, server_index = server_setup()
-    if server_index == 1:
-        subprocess.call(['bash', shell_scripts + '/setup-server.sh', 'everything'])
+    if server_index == 0:
+        subprocess.call(['bash', shell_scripts + '/setup-server.sh', '-i'])
+
 
 #     elif index == 2:
 #         subprocess.call(['bash', shell_scripts + '/start_django.sh'])
