@@ -6,9 +6,7 @@ shell_scripts= os.path.join(shell_scripts_dir, 'scripts')
 # BLACK, RED, GREEN, YELLOW, BLUE, MAGENTA, CYAN, WHITE = range(8)
 def server_setup():
     title = 'SERVER SETUP TASK: '
-    options = ['install everything','install git cli','install docker',
-
-               ]
+    options = [' - install everything']
     option, index = pick(options, title, indicator='=>', default_index=0)
     return option, index
     
