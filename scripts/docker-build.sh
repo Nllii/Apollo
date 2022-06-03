@@ -44,11 +44,9 @@ if [ $1 == "-build" ]; then
         echo -e "${Yellow_task}Building project: $project_name with Dockrfile :$dockerfile_name${END}"
         sudo docker build --tag $project_name:$dockerfile_name .
         sudo docker run -d $project_name:$dockerfile_name
-        fi
-    fi 
+    fi
+ fi 
     
-fi 
-
 
 
 if [ $1 == "-compose-build" ]; then 

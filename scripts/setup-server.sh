@@ -93,6 +93,7 @@ if [ $1 == "-everything" ]; then
     echo -e "${Yellow}- installing everything -${END}"
     # sudo apt update && sudo apt upgrade -y
     # sudo apt autoremove -y
+    # sudo apt install default-jdk -y
     # github_cli
     # install_cockpit
     # install_neofetch
