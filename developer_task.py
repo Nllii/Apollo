@@ -1,7 +1,6 @@
 from picker import pick
 import os
 import subprocess
-from picker.utils import printcolor
 shell_scripts_dir = os.path.dirname(os.path.abspath(__file__))
 shell_scripts= os.path.join(shell_scripts_dir, 'scripts')
 # BLACK, RED, GREEN, YELLOW, BLUE, MAGENTA, CYAN, WHITE = range(8)
@@ -31,10 +30,6 @@ def repo_task():
     return option, index
 
 
-
-
-
-
 def _admin_task():
     title = 'DEVELOPMENT TASK: '
     options = ['git','docker','server-setup']
@@ -51,15 +46,8 @@ if index == 0:
         ask_input = input('Enter commit message: ')
         subprocess.call(['bash', shell_scripts + '/git_commit.sh', str(ask_input)])
     elif git_index == 1:
-        repo_name = input('use current folder name or Enter one: ')
-        if repo_name == '':
-            printcolor(f"using folder name to create repo: {os.getcwd().split('/')[-1]}",1)            
-        else:
-            printcolor(f"creating repo called: {repo_name}",1)                           
+        subprocess.call(['bash', shell_scripts + '/create-repo.sh'])
 
-            
-        #     subprocess.call(['bash', shell_scripts + '/create_repo.sh'])
-        # subprocess.call(['bash', shell_scripts + '/git_new_repo.sh'])
 
 elif index == 1:
     docker_option, docker_index = docker_task()
@@ -69,7 +57,6 @@ elif index == 1:
         subprocess.call(['bash', shell_scripts + '/docker-build.sh', '-compose-build'])
 
 
-#  docker tag 871e4204955a libreddit:latest_arm
 
 elif index == 2:
     server_option, server_index = server_setup()
