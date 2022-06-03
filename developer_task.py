@@ -1,11 +1,10 @@
 from picker import pick
 import os
 import subprocess
-#import time 
-
+from picker.utils import printcolor
 shell_scripts_dir = os.path.dirname(os.path.abspath(__file__))
 shell_scripts= os.path.join(shell_scripts_dir, 'scripts')
-
+# BLACK, RED, GREEN, YELLOW, BLUE, MAGENTA, CYAN, WHITE = range(8)
 def server_setup():
     title = 'SERVER SETUP TASK: '
     options = ['install everything','install git cli','install docker',
@@ -44,6 +43,7 @@ def _admin_task():
 
 
 
+
 option, index = _admin_task()
 if index == 0:
     git_option, git_index = repo_task() 
@@ -61,7 +61,7 @@ elif index == 1:
         subprocess.call(['bash', shell_scripts + '/docker-build.sh', '-compose-build'])
 
 
-
+#  docker tag 871e4204955a libreddit:latest_arm
 
 elif index == 2:
     server_option, server_index = server_setup()

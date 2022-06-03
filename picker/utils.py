@@ -62,8 +62,3 @@ def make_password(length=16):
 
 
 
-printcolor(
-    "This script will help you to setup a new Modoboa instance.",
-    3
-    
-)
