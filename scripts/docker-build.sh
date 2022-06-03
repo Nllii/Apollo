@@ -35,6 +35,15 @@ if [ $1 == "-build" ]; then
             echo -e "${Yellow_task}Project name changed to ${project_name}${END}"
             sudo docker build --tag $project_name .
             sudo docker run -d $project_name
+        else
+            echo -e "${Yellow_task}Building project: $project_name${END}"
+            sudo docker build --tag $project_name .
+            sudo docker run -d $project_name
+        fi
+    else
+        echo -e "${Yellow_task}Building project: $project_name with Dockrfile :$dockerfile_name${END}"
+        sudo docker build --tag $project_name:$dockerfile_name .
+        sudo docker run -d $project_name:$dockerfile_name
         fi
     fi 
     
