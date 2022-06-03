@@ -26,7 +26,7 @@ def docker_task():
 
 def repo_task():
     title = 'REPO TASK: '
-    options = ['git commit']
+    options = ['git commit','create new repo']
     option, index = pick(options, title, indicator='=>', default_index=0)
     return option, index
 
@@ -50,8 +50,15 @@ if index == 0:
     if git_index == 0:
         ask_input = input('Enter commit message: ')
         subprocess.call(['bash', shell_scripts + '/git_commit.sh', str(ask_input)])
-    else:
-        pass
+    elif git_index == 1:
+        repo_name = input('Enter new repo name or press ENTER to use folder name: ')
+        if repo_name == '':
+            print('Creating new repo with current folder name')
+        else:
+            print('Creating new repo with name: ' + repo_name)
+            
+        #     subprocess.call(['bash', shell_scripts + '/create_repo.sh'])
+        # subprocess.call(['bash', shell_scripts + '/git_new_repo.sh'])
 
 elif index == 1:
     docker_option, docker_index = docker_task()

@@ -1,6 +1,6 @@
 ###  Workflow is a script to setup a Raspberry pi as a server for developement running ubuntu 22.04. Basic minimal setup.
 
-### For web developement docker images wil be used. Setting up ngnix, apache, maven etc... usually crashes the Raspberry pi, the is going to be a huge config of open ports that need to be fix. To avoid this; do everything in docker before moving to your machine.
+### For web developement docker images will be used. Setting up ngnix, apache, maven etc... usually has ports conflicts, so we docker is the best option to  avoid heahache.
 
 TESTED on ubuntu 22.04 
 
@@ -43,17 +43,36 @@ logout and login again
 ```
 
 
-
-
 scripts added: 
+- project
+ DEVELOPMENT TASK:
 
-- Added commit project
+ => git
+    docker
+    server-setup
+
+
+ REPO TASK:
+ => git commit
+ => create repo (! Must be called in a directory without a .git file)
+    
+
+
+
+
+
+
+
+
+
+
 - Added github support
 - Add start django server
 - Added Docker script 
 - Added Portainer
 - Add golang 
-- Add mosquitto docker support 
+- Add mosquitto docker support
+
 ~~-Setup jailbreak stuff~~
 
 
