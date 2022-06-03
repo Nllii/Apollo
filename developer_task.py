@@ -51,11 +51,12 @@ if index == 0:
         ask_input = input('Enter commit message: ')
         subprocess.call(['bash', shell_scripts + '/git_commit.sh', str(ask_input)])
     elif git_index == 1:
-        repo_name = input('Enter new repo name or press ENTER to use folder name: ')
+        repo_name = input('use current folder name or Enter one: ')
         if repo_name == '':
-            print('Creating new repo with current folder name')
+            printcolor(f"using folder name to create repo: {os.getcwd().split('/')[-1]}",1)            
         else:
-            print('Creating new repo with name: ' + repo_name)
+            printcolor(f"creating repo called: {repo_name}",1)                           
+
             
         #     subprocess.call(['bash', shell_scripts + '/create_repo.sh'])
         # subprocess.call(['bash', shell_scripts + '/git_new_repo.sh'])

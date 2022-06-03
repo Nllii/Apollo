@@ -4,7 +4,11 @@ RED='\033[0;31m'
 END='\033[0m' # No Color
 ORANGE='\033[0;33m'
 
-function gh_cli(){
+
+
+
+
+function github_cli(){
     cd ..
     read -p "The project name : " $1
     echo -e "${ORANGE}creating private repository : ${project_name} ${END}"
@@ -28,5 +32,12 @@ function gh_cli(){
     exit 0
 }
 
+if [ -x "$(command -v gh)" ]; then
+    printf "${ORANGE}Using github CLI${END}\n"
+    # gh_cli
+else
+    printf "${ORANGE}github CLI not found${END}\n"
 
+    # exit 1
+fi
 $1
