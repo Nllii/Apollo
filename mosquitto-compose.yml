@@ -1,13 +1,26 @@
 version: "3.9"
 services:
   mosquitto:
-    
-
-    image: eclipse-mosquitto
+    image: arm64v8/eclipse-mosquitto
     container_name: mosquitto
     volumes:
       - ./mosquitto_mqtt:/mosquitto
     ports:
       - 1883:1883
       - 9001:9001
-      
+    # command: ["/bin/ash", "-c", "mosquitto_pub -t is_online  -m 'true'"]
+
+
+# version: "3.9"
+# services:
+#   mosquitto:
+#     image: arm64v8/eclipse-mosquitto
+#     container_name: mosquitto
+#     volumes:
+#       - ./mosquitto_mqtt:/mosquitto
+#     ports:
+#       - 1883:1883
+#       - 9001:9001
+#     # run a command 
+
+# mosquitto_pub -t is_online -m "helloworld"

@@ -86,7 +86,9 @@ function libreddit(){
     docker build -f Dockerfile.arm . -t arm64v8/libreddit:latest
     # sudo docker pull spikecodes/libreddit:arm
     sudo docker run  -d --name libreddit -p 80:8081 spikecodes/libreddit:arm
-}   docker update --restart always $(docker ps -q)
+   docker update --restart always $(docker ps -q)
+}
+
 
 
 if [ $1 == "-everything" ]; then 

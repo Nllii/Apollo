@@ -61,7 +61,13 @@ if [ $1 == "-compose-build" ]; then
 fi 
 
 
-
+# docker volume create cherries-volume
+# docker run --name 
+# sudo docker run -d $project_name:$dockerfile_name
+# sudo docker run -d streama:latest --restart=always  -v cherries:/localhost  -p 49155:8080
+# docker run --name  streama  --restart=always   -v cherries:/app/streama/localhost  -p 49155:8080 -d streama:latest
+# sudo cp -p realshort.mp4  /home/ubuntu/var/lib/docker/volumes/cherries/_data/
+# sudo docker run -d -v cherries:/app/streama/localhost  -p 49155:8080 -d streama:latest
     # sudo docker run -d $image_name
     # docker run -d -p 9000:9000 --name=portainer --restart=always -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer-ce
 

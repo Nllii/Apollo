@@ -11,5 +11,5 @@ services:
       interval: 5m
       timeout: 3s
       
-docker pull spikecodes/libreddit:arm
-docker run -d --name libreddit -p 80:8080 spikecodes/libreddit
+# docker pull spikecodes/libreddit:arm
+# docker run -d --name libreddit -p 80:8080 spikecodes/libreddit

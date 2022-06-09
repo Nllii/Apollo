@@ -67,9 +67,6 @@ elif index == 2:
     
     
 
-
-
-
-    
-
+# docker-compose -f mosquitto-compose.yml build
+# docker-compose  -f mosquitto-compose.yml up -d
 

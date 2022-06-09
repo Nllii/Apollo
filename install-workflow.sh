@@ -3,6 +3,24 @@
 # set path to the script
 set -e
 
+function ping_server() {
+    # The IP for the server you wish to ping (
+    SERVER=$1
+    # Only send two pings, sending output to /dev/null
+    ping -c2 ${SERVER} > /dev/null
+    # If the return code from ping ($?) is not 0 (meaning there was an error)
+    if [ $? != 0 ]
+    then
+        # Restart the wireless interface
+        ifdown --force wlan0
+        ifup wlan0
+    fi
+}
+
+# chmod +x /usr/local/bin/install-workflow.sh
+
+
+
 function setup_path(){
     read -p "Do you want workflow in your path? (y/n)" -n 1 -r
     echo    # (optional) move to a new line

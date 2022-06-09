@@ -1,13 +1,16 @@
 #!/bin/bash
-# this script checks if my raspberry pi is running if not just reboot! if it comes online. Send a notification to my phone!
-while true; do
-    wget -q --spider https://google.com 
-    if [ $? -eq 0 ]; then
-        echo "Online"
-        # break
-    else
-        echo "Offline"
-        # sudo reboot
-    fi
-    sleep 300
-done
+# The IP for the server you wish to ping (8.8.8.8 is a public Google DNS server)
+SERVER=8.8.8.8
+
+# Only send two pings, sending output to /dev/null
+ping -c2 ${SERVER} > /dev/null
+
+# If the return code from ping ($?) is not 0 (meaning there was an error)
+if [ $? != 0 ]
+then
+    # Restart the wireless interface
+    ifdown --force wlan0
+    ifup wlan0
+fi
+
+
