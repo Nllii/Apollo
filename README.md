@@ -3,17 +3,7 @@
 
 ### For web developement docker images will be used. Setting up ngnix, apache, maven etc... usually has ports conflicts.
 
-TESTED on ubuntu 22.04 
-
-
-experienced linux users Note:
-
-Yo... you can manually just set the path to the workflow folder in any shell . , give script dev a chmod x or u or both permission to execute, and call script $dev , test it in tmux session.
-
-To uninstall, just delete the path and the project folder. 
-This script doesn't touch /usr or /opt or /bin to prevent root calling some project path in your home or some where else on your system. 
-
-
+RUNNING on ubuntu 22.04 
 
 
 
@@ -51,14 +41,8 @@ scripts added:
 - Added Docker script 
 - Added Portainer
 - Add golang 
-- Add mosquitto docker support
 
+~~- Add mosquitto docker support~~
 ~~-Setup jailbreak stuff~~
-
-
-
-
-
-
 
 credits: - https://github.com/wong2/pick

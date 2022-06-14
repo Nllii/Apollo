@@ -83,6 +83,8 @@ fi
 #     exit 0
 # fi
 
+
+# TODO Fix this!
 if [ $1 == "-i" ] || [ $1 == "--install" ]; then 
     if ! [ -x "$(command -v dev)" ]; then   
         echo "installing workflow ..."
