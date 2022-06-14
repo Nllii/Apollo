@@ -64,10 +64,3 @@ elif index == 2:
         subprocess.call(['bash', shell_scripts + '/setup-server.sh', '-everything'])
 
     
-    
-    
-    
-
-# docker-compose -f mosquitto-compose.yml build
-# docker-compose  -f mosquitto-compose.yml up -d
-

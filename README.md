@@ -1,7 +1,7 @@
 ###  Workflow is a script to setup a Raspberry pi as a server for developement running ubuntu 22.04. Basic minimal setup.
 
+### For web developement docker images will be used. Setting up ngnix, apache, maven etc... usually has ports conflicts, and it is a pain to figure out which program is using which ports. 
 
-### For web developement docker images will be used. Setting up ngnix, apache, maven etc... usually has ports conflicts.
 
 RUNNING on ubuntu 22.04 
 
@@ -44,5 +44,10 @@ scripts added:
 
 ~~- Add mosquitto docker support~~
 ~~-Setup jailbreak stuff~~
+
+
+TODO: 
+- [ ] setup jailbreak remote ip 
+- [ ]
 
 credits: - https://github.com/wong2/pick
