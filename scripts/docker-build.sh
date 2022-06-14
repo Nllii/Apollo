@@ -55,8 +55,9 @@ if [ $1 == "-compose-build" ]; then
         echo -e "${RED}No docker-compose.yml found.${END}"
         exit 1
     fi
-    echo -e "${Yellow_task}docker compose ${project_name}${END}"
-    sudo docker-compose up -d
+    # echo -e "${Yellow_task}docker compose ${project_name}${END}"
+    echo -e "${RED}using --no-cache build  ${project_name}${END}"
+    docker-compose build --no-cache && sudo docker-compose up -d 
 
 fi 
 
