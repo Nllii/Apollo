@@ -23,8 +23,9 @@ or
 git clone https://github.com/Nllii/workflow.git
 cd workflow
 bash install-workflow.sh
-logout and login again 
-
+#sudo reboot, if the path doesn't link. Try todo 
+$sudo bash install-workflow.sh 
+ 
 ```
 
 ## how to use :
@@ -54,11 +55,5 @@ TODO:
 - [ ] create a backup script
 
 
-
-
-
-
-
-
 credits: - https://github.com/wong2/pick
-- 
+
