@@ -43,11 +43,21 @@ scripts added:
 - Add golang 
 
 ~~- Add mosquitto docker support~~
+
 ~~-Setup jailbreak stuff~~
 
 
 TODO: 
-- [ ] setup jailbreak remote ip 
-- [ ]
+
+- [ ] setup jailbreak remote
+- [ ] get private notification
+- [ ] create a backup script
+
+
+
+
+
+
+
 
 credits: - https://github.com/wong2/pick
