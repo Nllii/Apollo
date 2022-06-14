@@ -49,3 +49,8 @@ if [ $1 == "-compose-build" ]; then
 fi 
 
 
+if [ $1 == "-update-containers" ]; then 
+    echo -e "${RED}Updating docker to containers${END}"
+    docker update --restart always $(docker ps -q)
+
+fi

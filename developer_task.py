@@ -15,7 +15,7 @@ def server_setup():
 
 def docker_task():
     title = 'DOCKER TASK: '
-    options = ['docker build && run', 'docker compose up']
+    options = ['docker build && run', 'docker compose up', 'update containers restart to - always']
     option, index = pick(options, title, indicator='=>', default_index=0)
     return option, index
 
@@ -53,7 +53,8 @@ elif index == 1:
         subprocess.call(['bash', shell_scripts + '/docker-build.sh', '-build'])
     elif docker_index == 1:
         subprocess.call(['bash', shell_scripts + '/docker-build.sh', '-compose-build'])
-
+    elif docker_index == 2:
+        subprocess.call(['bash', shell_scripts + '/docker-build.sh', '--update-containers'])
 
 
 elif index == 2:

@@ -82,11 +82,11 @@ function install_portainer(){
 }
 
 function libreddit(){
-    
-    docker build -f Dockerfile.arm . -t arm64v8/libreddit:latest
-    # sudo docker pull spikecodes/libreddit:arm
+    # if you don't trust the source, you can always build it yourself. remove the commits and find the github repo.
+    # docker build -f Dockerfile.arm . -t arm64v8/libreddit:latest
+    sudo docker pull spikecodes/libreddit:arm
     sudo docker run  -d --name libreddit -p 80:8081 spikecodes/libreddit:arm
-   docker update --restart always $(docker ps -q)
+    #docker update --restart always $(docker ps -q)
 }
 
 
