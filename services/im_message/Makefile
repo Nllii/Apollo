@@ -11,5 +11,5 @@ is_script:
 	ls -l $(docker_project_path)
 	sudo docker-compose build --no-cache 
 	sudo docker-compose up -d 
-	docker exec snikket create-invite --admin --group default
+	sudo docker exec snikket create-invite --admin --group default
 

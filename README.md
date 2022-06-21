@@ -11,6 +11,14 @@ setup your path to have ./workflow/dev
 bash install-dev.sh 
 
 ```
+### with 30 Mbps download speed you are looking at ETA of setup to be 1hr and fixing little errors. 
+
+### keep run runing the script until all downloads are done and Reboot your system before working on your code. 
+
+- Happy hacking !
+
+-
+
 
 
 
@@ -76,11 +84,13 @@ credits:
  
 TODO:
 - [x] provide a better installing scripts without using 3rd party libraries
-- [ ] Clean repo 
+- [x] Clean repo history 
 ```bash
 
 know issues to fix
-- None
+1. - if the system stops responding via ssh discount it from the network(if wifi, kick it off the network and reconnet) and ssh again.
+
+2. Restart system and keep reboot until it everything is installed. 
 
 ```
 
@@ -91,4 +101,9 @@ Notes:
 - https://quickref.me/toml
 
 
-- !history
+https://stackoverflow.com/questions/6791889/git-untrack-a-file-in-local-repo-only-and-keep-it-in-the-remote-repo
+
+
+git update-index --assume-unchanged services/im_message/snikket/snikket.conf
+git update-index --no-assume-unchanged <file>
+git ls-files -v | grep '^h '

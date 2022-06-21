@@ -17,6 +17,7 @@ if [ $1 == "-install-persistence_data" ]; then
     -v /etc/nginx/ssl:/etc/nginx/ssl \
     docpht_workflow:latest
 else 
+    # if this else statement prints, thats voodoo magic.
     echo -e "${Yellow}Starting docpht.${END}">&2
     # docker start docpht
 

@@ -20,14 +20,17 @@ echo -e $RESET
 # }
 
 
-# trap catch_little_errors exit
+trap catch_little_errors exit 
 
 function catch_little_errors() {
   echo -e $CYAN
-  echo  -e "workflow probably exit  because no make command or something else. \ndo  # sudo apt-get update && sudo apt install build-essential -y"
+  echo  -e "workflow probably exit  because no make command or something else. \ndo  # sudo apt-get update && sudo apt install build-essential -y \n and re-run the script again"
+  # sudo apt-get update && sudo apt install build-essential -y
   echo -e $RESET
-  sudo apt-get update && sudo apt install build-essential -y
-
+  echo -e $RED
+  echo -e "rebooting system"
+  echo -e $RESET
+  # sudo reboot
 
 }
 
@@ -38,10 +41,22 @@ do
   echo -e $YELLOW
   echo "installing service: $service"
   echo -e $RESET
-  if [[ -f "$SERVER_DIR/services/$service/..is_unimportant" ]]; then
+   if [[ -f "$SERVER_DIR/services/$service/..is_important" ]]; then
     echo -e $YELLOW
     make -s -C "$SERVER_DIR/services/$service" is_script
     echo -e $RESET
   fi
+  if [[ -f "$SERVER_DIR/services/$service/.is_important" ]]; then
+    echo -e $YELLOW
+    make -s -C "$SERVER_DIR/services/$service" is_script
+    echo -e $RESET
+  fi
+
+  if [[ -f "$SERVER_DIR/services/$service/.is_unimportant" ]]; then
+    echo -e $YELLOW
+    make -s -C "$SERVER_DIR/services/$service" is_script
+    echo -e $RESET
+  fi
+
 done
 
