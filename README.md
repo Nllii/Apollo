@@ -60,6 +60,7 @@ Release notes:
 - v0.0.1 
     - using makefile(s)
     - fix some issues with toml and javascript - can't return value from toml 
+    - installing the important stuff first.
 
 
 
@@ -85,14 +86,12 @@ credits:
 TODO:
 - [x] provide a better installing scripts without using 3rd party libraries
 - [x] Clean repo history 
-```bash
 
 know issues to fix
 1. - if the system stops responding via ssh discount it from the network(if wifi, kick it off the network and reconnet) and ssh again.
 
 2. Restart system and keep reboot until it everything is installed. 
 
-```
 
 
 

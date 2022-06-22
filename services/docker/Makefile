@@ -7,3 +7,9 @@ is_script:
 	ls -l $(scripts_path)
 	bash $(scripts_path)/setup-server.sh -install-docker
 
+
+.PHONY: error
+error: ## Disable service
+	@rm -rf .enable
+	@touch .disabled
+

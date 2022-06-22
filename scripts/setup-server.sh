@@ -2,25 +2,21 @@
 END='\033[0m' 
 Yellow="\033[0;93m[x]" 
 set -e
-# if [ -x "$(command -v docpht)" ]; then
-#     echo -e "${Yellow}docpht already installed.${END}">&2
-# else
-#     echo -e "${Yellow}Installing docpht.${END}">&2
-#     pip install docpht
-# fi
-if [ $1 == "-install-persistence_data" ]; then 
-    echo -e "${Yellow}adding  persistence_data ${END}">&2
-    docker run -d --name docpht_workflow -p 8070:80 -p 443:443 -t  \
-    -v /var/www/app/src/config:/var/www/app/src/config \
-    -v /var/www/app/data:/var/www/app/data \
-    -v /var/www/app/pages:/var/www/app/pages \
-    -v /etc/nginx/ssl:/etc/nginx/ssl \
-    docpht_workflow:latest
-else 
-    # if this else statement prints, thats voodoo magic.
-    echo -e "${Yellow}Starting docpht.${END}">&2
-    # docker start docpht
 
+
+if [ $1 == "-install-persistence_data" ]; then 
+    if [ -x "$(command -v docker)" ]; then
+        echo -e "${Yellow}adding  persistence_data ${END}">&2
+        sudo docker run -d --name docpht_workflow -p 8070:80 -p 444:443 -t  \
+        -v /var/www/app/src/config:/var/www/app/src/config \
+        -v /var/www/app/data:/var/www/app/data \
+        -v /var/www/app/pages:/var/www/app/pages \
+        -v /etc/nginx/ssl:/etc/nginx/ssl \
+        docpht_workflow:latest
+        # echo -e "${Yellow}found docker.${END}">&2
+        
+        exit 
+    fi
 fi 
 
 
