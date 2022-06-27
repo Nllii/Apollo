@@ -3,9 +3,6 @@
 
 ###  Workflow is a script to setup a Raspberry pi as a server for developement running ubuntu 22.04. Basic minimal setup.
     
-    []: # Language: bash
-    []: # Path: .bashrc 
-
 
 
 
