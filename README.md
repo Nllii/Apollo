@@ -2,7 +2,9 @@
     
     []: # Language: bash
     []: # Path: .bashrc 
-![showcase](https://github.com/Nllii/workflow/blob/e9c9551949b0bc34d24b6c3aec1415b56de058b8/scripts/gif/Jun-27-2022%2016-11-42.gif)
+
+![showcase](https://raw.githubusercontent.com/Nllii/workflow/master/scripts/gif/Jun-27-2022%2016-11-42.gif)
+
 
 
 ##### For web developement docker images will be used. Setting up ngnix, apache, maven etc... usually has ports conflicts, and it is a pain to figure out which program is using which ports. 
