@@ -4,14 +4,14 @@ DOCKER_COMPOSE_FILE := $(ROOT_DIR)/docker-compose.yml
 SHELL := $(shell which bash)
 
 
-# .PHONY: is_enable
-# is_enable: ## Enable service
-# 	@touch .enable
+.PHONY: is_enable
+is_enable: ## Enable service
+	@touch .enable
 
 
 .PHONY: error
 is_error: ## Disable service
-	@rm -rf .enable
+# @rm -rf .enable
 	@rm -rf .disabled
 # @touch .disabled
 

@@ -1,5 +1,4 @@
 #!/bin/bash
-# set -e 
 
 RED='\033[0;31m'
 White="\[\033[0;37m\]"
@@ -47,7 +46,9 @@ if [ $1 == "-compose-build" ]; then
         exit 1
     fi
     echo -e "${RED}using --no-cache build  ${project_name}${END}"
-    docker-compose build --no-cache && sudo docker-compose up -d 
+    sudo docker-compose build --no-cache --force-rm
+    sudo docker-compose up -d --force-recreate
+    #docker-compose build --no-cache && sudo docker-compose up -d 
 
 fi 
 
