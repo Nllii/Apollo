@@ -26,47 +26,48 @@ function catch_little_errors() {
   echo -e $CYAN
   echo  -e "workflow probably exit  because no make command or something else. \ndo  # sudo apt-get update && sudo apt install build-essential -y \nand re-run the script again"
   echo -e "looks like ${important[$i]} has an error or exit"
-  # make -s -C "$SERVER_DIR/services/${important[$i]}" error
-  # sudo apt-get update && sudo apt-get install build-essential -y
-  # sudo apt-get update && sudo apt install build-essential -y
+  sudo apt-get update && sudo apt-get install build-essential -y
   echo -e $RESET
   echo -e $RED
   echo -e "# TODO: ask for system  reboot. For now skipping"
   echo -e $RESET
+  exit
+  # make -s -C "$SERVER_DIR/services/${important[$i]}" error
+  # sudo apt-get update && sudo apt install build-essential -y
   # sudo reboot
 
 }
 
 
 
-  declare -a important=(
-  "docker" 
-  "portainer"
-  "github_cli"
-  "cockpit"
+declare -a important=(
+"docker" 
+"portainer"
+"github_cli"
+"cockpit"
 
-  )
-  important_=${#important[@]}
-  echo "installing the important stuff first"
-  # use for loop to read all values and indexes
-  for (( i=0; i<${important_}; i++ ));
-  do
-    # check to see if its important with the .important file 
-    if [[ -f "$SERVER_DIR/services/${important[$i]}/.is_important" ]]; then
-      if [[ -f "$SERVER_DIR/services/${important[$i]}/.enable" ]]; then
-        echo -e $MAGENTA
-        echo "${important[$i]} already enabled."  
-        echo -e $REST
-      else
-        echo -e $YELLOW
-        echo "installing ${important[$i]}"
-        make -s -C "$SERVER_DIR/services/${important[$i]}" is_script
-        echo "adding .enabled to directory"
-        make -s -C "$SERVER_DIR/services/${important[$i]}" 
-        echo -e $REST
-      fi
+)
+important_=${#important[@]}
+echo "installing the important stuff first"
+# use for loop to read all values and indexes
+for (( i=0; i<${important_}; i++ ));
+do
+  # check to see if its important with the .important file 
+  if [[ -f "$SERVER_DIR/services/${important[$i]}/.is_important" ]]; then
+    if [[ -f "$SERVER_DIR/services/${important[$i]}/.enable" ]]; then
+      echo -e $MAGENTA
+      echo "${important[$i]} already enabled."  
+      echo -e $REST
+    else
+      echo -e $YELLOW
+      echo "installing ${important[$i]}"
+      make -s -C "$SERVER_DIR/services/${important[$i]}" is_script
+      echo "adding .enabled to directory"
+      make -s -C "$SERVER_DIR/services/${important[$i]}" 
+      echo -e $REST
     fi
-  done
+  fi
+done
 
 
 

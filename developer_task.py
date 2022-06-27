@@ -40,7 +40,7 @@ def repo_task():
 
 def _admin_task():
     title = 'DEVELOPMENT TASK: '
-    options = ['git','docker','server-setup']
+    options = ['git','docker','server-setup','permission this directory']
     option, index = pick(options, title, indicator='=>', default_index=0)
     return option, index
 
@@ -55,6 +55,7 @@ if index == 0:
         subprocess.call(['bash', shell_scripts + '/git_commit.sh', str(ask_input)])
     elif git_index == 1:
         subprocess.call(['bash', shell_scripts + '/create-repo.sh'])
+
 
 
 elif index == 1:
@@ -77,6 +78,13 @@ elif index == 2:
         print("still working on this part... script is still in being worked on")
 
         # subprocess.call(['bash', shell_scripts + '/setup-server.sh', '-everything'])
+
+
+elif index == 3:
+    print("adding permission using sudo chmod -R a+rwx  ./ ")
+    subprocess.call(['bash',shell_scripts + '/permission.sh','-permissions'])
+
+
 
 
 
