@@ -94,10 +94,8 @@ done
 
 
 
-
-# # clean up  before git push
+#TODO: clean up the mess before git push skipping for now. Since no one is using this script. 
 # for service in "${SERVICES[@]}"
-
 # do
 #   #  make -s -C "$SERVER_DIR/services/$service" 
 #     if [[ -f "$SERVER_DIR/services/$service/.is_unimportant" ]]; then

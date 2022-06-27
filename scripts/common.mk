@@ -11,8 +11,8 @@ is_enable: ## Enable service
 
 .PHONY: error
 is_error: ## Disable service
-# @rm -rf .enable
-	@rm -rf .disabled
+	@rm -rf .enable
+# @rm -rf .disabled
 # @touch .disabled
 
 
