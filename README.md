@@ -1,9 +1,12 @@
+![showcase](https://raw.githubusercontent.com/Nllii/workflow/master/scripts/gif/Jun-27-2022%2016-11-42.gif)
+
+
 ###  Workflow is a script to setup a Raspberry pi as a server for developement running ubuntu 22.04. Basic minimal setup.
     
     []: # Language: bash
     []: # Path: .bashrc 
 
-![showcase](https://raw.githubusercontent.com/Nllii/workflow/master/scripts/gif/Jun-27-2022%2016-11-42.gif)
+
 
 
 
