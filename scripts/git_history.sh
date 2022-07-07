@@ -1,4 +1,4 @@
-#TODO: turn this into a script 
+#TODO: turn this into a script, this script removes the git history, and then runs the script again.
 
 do not push just 
 	git add .

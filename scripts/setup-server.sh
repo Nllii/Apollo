@@ -4,6 +4,16 @@ Yellow="\033[0;93m[x]"
 set -e
 
 
+
+function preventSudo() {
+    getUsername=$(whoami)
+    sudo cp /etc/sudoers /etc/sudoers.bak
+    sudo bash -c "echo '$getUsername ALL=(ALL) NOPASSWD: ALL' | (EDITOR='tee -a' visudo)"
+}
+
+
+
+
 if [ $1 == "-install-persistence_data" ]; then 
     if [ -x "$(command -v docker)" ]; then
         echo -e "${Yellow}adding  persistence_data ${END}">&2
@@ -130,6 +140,7 @@ fi
 
 if [ $1 == "-everything" ]; then 
     echo -e "${Yellow}- installing everything -${END}"
+    # preventSudo
     # sudo apt update && sudo apt upgrade -y
     # sudo apt autoremove -y
     # github_cli
