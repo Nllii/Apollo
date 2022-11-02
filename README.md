@@ -63,6 +63,16 @@ you can use any xmmp client to get notifications from this script
 
 
 Release notes:
+
+
+
+- v0.0.2 
+    - updating to use https://github.com/lpenz/tuzue
+    
+
+
+
+
 - v0.0.1 
     - using makefile(s)
     - fix some issues with toml and javascript - can't return value from toml 
