@@ -11,4 +11,4 @@ if [[ "${TRACE-0}" == "1" ]]; then
 fi
 
 $system_python $project_path
-exit 0
+# exit 0
