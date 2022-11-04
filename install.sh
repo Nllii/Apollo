@@ -24,20 +24,11 @@ tty_blue="$(tty_mkbold 34)"
 tty_red="$(tty_mkbold 31)"
 tty_bold="$(tty_mkbold 39)"
 tty_reset="$(tty_escape 0)"
-warn() {
-  printf "${tty_yellow}Warning${tty_reset}: %s\n" "$(chomp "$1")"
-}
-abort() {
-  printf "${tty_red}fail${tty_reset}: %s\n" "$(chomp "$1")"
-  exit 1
-}
 
-perform_task() {
-  printf "${tty_blue}==>${tty_bold} %s${tty_reset}\n" "$(shell_join "$@")"
-}
-chomp() {
-  printf "%s" "${1/"$'\n'"/}"
-}
+
+# chomp() {
+#   printf "%s" "${1/"$'\n'"/}"
+# }
 
 shell_join() {
   local arg
@@ -56,6 +47,25 @@ execute() {
   fi
 }
 
+chomp() {
+  printf "%s" "${1/"$'\n'"/}"
+}
+
+
+warn() {
+  printf "${tty_yellow}Warning${tty_reset}: %s\n" "$(chomp "$1")"
+}
+abort() {
+  printf "${tty_red}fail${tty_reset}: %s\n" "$(chomp "$1")"
+  exit 0
+}
+abort_println() {
+  printf "${tty_red}performing${tty_reset}: %s\n" "$(chomp "$1")"
+  # exit 0
+}
+perform_task() {
+  printf "${tty_blue}==>${tty_bold} %s${tty_reset}\n" "$(shell_join "$@")"
+}
 
 UNAME_MACHINE="$(/usr/bin/uname -m)"
 if [[ "${UNAME_MACHINE}" != "arm64" ]] && [[ "${UNAME_MACHINE}" != "x86_64" ]]
@@ -93,7 +103,52 @@ unlink_project(){
     execute "rm" "-fv" "${local_executable}/bin/dev"
 
 }
+# move_project(){
+#     echo -e "$yellow coping project... $end"
+#     cp -r ./src/tuzue ./sample_project
+#     # echo -e "$yellow Moving project to /usr/local/bin $end"
+# }
 
+move_dir(){
+    perform_task "moving directory src/tuzue..."
+    mv tuzue/src/tuzue ./_tuzue
+    rm -rf tuzue
+    mv _tuzue tuzue
+
+}
+
+install_tuzue(){
+  if [ -d "./tuzue" ]; then
+    warn "tuzue already installed"
+    else
+      perform_task "installing tuzue..."
+      execute "git" "clone" "https://github.com/lpenz/tuzue.git"
+      move_dir
+      exit 0
+
+  fi
+
+}
+
+# this is for python to use.
+if [[ "${1-}" =~ ^-*l(link)?$ ]]; then
+    link_project
+    exit 0
+elif [[ "${1-}" =~ ^-*u(nlink)?$ ]]; then
+    unlink_project
+    exit 0
+fi
+
+
+
+if [[ "${1-}" =~ ^-*a(dd)?$ ]]; then
+    install_tuzue
+    exit 0
+elif [[ "${1-}" =~ ^-*r(m)?$ ]]; then
+    abort_println "removing tuzue"
+    rm -rf tuzue
+    exit 0
+fi
 
 
 newline=$'\n'
@@ -108,20 +163,16 @@ then
     if [[ $REPLY =~ ^[Yy]$ ]]
     then
         unlink_project
-        exit 1
+        exit 0
     fi
 else
     link_project
-    exit 1
+    exit 0
 fi
 
 
 
 
-# this is for python to use.
-if [[ "${1-}" =~ ^-*l(link)?$ ]]; then
-    link_project
-elif [[ "${1-}" =~ ^-*u(nlink)?$ ]]; then
-    unlink_project
-    exit
-fi
+
+
+
