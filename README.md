@@ -49,25 +49,15 @@ bash install-dev.sh
     
 
 
-[snikket-server config](https://github.com/Nllii/workflow/blob/9ca64008ff525d0f85f36260d120f38d8dcbce5c/workflow.settings.toml#L18)
-~~ notifications are sent using snikket-server~~
-```bash
-you can use any xmmp client to get notifications from this script
-```
-
-
-
-
 
 
 
 
 Release notes:
 
-
-
 - v0.0.2 
     - updating to use https://github.com/lpenz/tuzue
+    - using /usr/local/bin for executables 
     
 
 
