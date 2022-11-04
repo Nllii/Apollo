@@ -151,6 +151,15 @@ elif [[ "${1-}" =~ ^-*r(m)?$ ]]; then
 fi
 
 
+
+
+
+
+
+
+
+
+
 newline=$'\n'
 warn "Note: this script uses symbolic link method in$newline/usr/local/bin on both macOS and Linux."
 

@@ -14,7 +14,7 @@ def link_public_repo():
     pass
 
 
-tools = ["docker", "git", "python", "rust", "vim", "zsh"]
+tools = ["setup"]
 get_response = tuzue.navigate(tools, "sample programmer quirks and setup")
 if get_response == 'python':
     python_quirks = ["import this", "import antigravity", "import __hello__"]
