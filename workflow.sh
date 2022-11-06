@@ -70,34 +70,61 @@ perform_task() {
 
 
 install_all(){
-    warn "install_all"
-    
+    perform_task "installing all"
+
 }
 
-
+individual_install(){
+		perform_task "individual install"
+}
 
 
 server_config(){
-    if [[ "${1-}" =~ ^-*ser(all)?$ ]]; then 
-        perform_task "$1 is the server config"
+    if [[ "${1-}" =~ ^-*(install_all)?$ ]]; then
+				install_all
+        # perform_task "$1ing is the server config"
     fi
 
-    if [[ "${1-}" =~ ^-*ser(bye)?$ ]]; then 
-        perform_task "$1 is the server config bye"
+    if [[ "${1-}" =~ ^-*individual?$ ]]; then
+				individual_install
+        # perform_task "$1 is the server config bye"
     fi
 }
 
-if [[ $1 == "-server" ]]; then
+
+
+commit(){
+	    if [[ "${1-}" =~ ^-*commiting?$ ]]; then
+			perform_task "commiting"
+			END='\033[0m'
+			Yellow="\033[0;93m[x]"
+			echo -e "${Yellow}Pushing project commit: \n$1${END}"
+			git add .
+			git commit -m "$1"
+			git push
+			echo -e "\n${Yellow}Commit message: $1${END}"
+
+
+		fi
+
+}
+
+
+
+
+
+
+
+
+
+if [[ $1 == "server" ]]; then
     if [[ "${OS}" == "aDarwin" ]]
     then
-        echo "server can only be config on Linux system not ${OS}"
+        echo "$1 can only be config on Linux system not ${OS}"
         exit 0
         else
-        echo "server config"
-        # exit 0 
-        # echo "$1 $2"
-        # server_config "$2"
-        # exit 0 
-        # server_config "$@"
+				"${@:2}" "${@:3}"
+				# get the second argument
+				# echo "${2-}"
     fi
 fi

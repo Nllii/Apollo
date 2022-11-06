@@ -1,4 +1,0 @@
-Ping successful at  06:12:47 on 07-07-2022 01:12 AM
-Ping successful at  06:12:52 on 07-07-2022 01:12 AM
-Ping failed at  06:13:09 on 07-07-2022 01:13 AM
-Ping failed at  06:13:10 on 07-07-2022 01:13 AM
