@@ -69,7 +69,11 @@ perform_task() {
 
 
 
-
+permission(){
+	current_dir=$(pwd)
+	perform_task "adding permission using sudo chmod -R a+rwx $current_dir"
+	execute sudo chmod -R a+rwx $current_dir
+}
 
 install_all(){
     perform_task "installing all"
@@ -122,7 +126,5 @@ if [[ $1 == "server" ]]; then
         exit 0
         else
 				"${@:2}" "${@:3}"
-				# get the second argument
-				# echo "${2-}"
     fi
 fi

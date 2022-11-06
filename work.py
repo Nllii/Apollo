@@ -5,7 +5,7 @@ from  secret_assistant import notification
 
 # notification("testing notifications").info().sendmessage().send_mail()
 PROJECT_PATH = os.path.dirname(os.path.abspath(__file__))
-workdir = f"{PROJECT_PATH}/workflow.sh"
+_workdir_ = f"{PROJECT_PATH}/workflow.sh"
 _install_ =  f"{PROJECT_PATH}/install.sh"
 def py_quirk():
     import this
@@ -27,15 +27,18 @@ def individual_install():
 
 
 
-dev_task = ["commit ", "setup","workflow-config"].index(tuzue.navigate(["commit ", "setup","workflow-config"], "development task"))
+dev_task = ["commit ", "setup","help"].index(tuzue.navigate(["commit ", "setup","help"], "development task"))
 if dev_task == 0:
-	subprocess.run(['bash',workdir, "server", "commit","commiting"])
+	subprocess.run(['bash',_workdir_, "server", "commit","commiting"])
 elif dev_task == 1:
     pass
 elif dev_task == 2:
-	workflow_config = ["remove",""].index(tuzue.navigate(["remove"], "remove this script ? "))
+	workflow_config = ["remove this script","give all access to folder"].index(tuzue.navigate(["remove this script","give all access to folder"], "remove this script ? "))
 	if workflow_config == 0:
 		subprocess.run(['bash',_install_])
+	elif workflow_config == 1:
+		subprocess.run(['bash',_workdir_, "server", "permission"])
+		pass
 
 
 
