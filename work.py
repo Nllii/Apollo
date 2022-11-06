@@ -38,7 +38,6 @@ elif dev_task == 1:
 		# (...)
 		individual_install = ["docker","portainer","github_cli","cockpit"].index(tuzue.navigate(["docker","portainer","github_cli","cockpit"], "individual task"))
 
-		# individual_install = individual_install()
 		subprocess.run(['bash',_workdir_, "server", "server_config","individual"])
 
 	elif server_install == 2:
@@ -48,10 +47,8 @@ elif dev_task == 1:
 elif dev_task == 2:
 	workflow_config = ["remove this script","give all access to folder"].index(tuzue.navigate(["remove this script","give all access to folder"], "remove this script ? "))
 	if workflow_config == 0:
-		(...)
 		subprocess.run(['bash',_install_])
 	elif workflow_config == 1:
-		(...)
 		subprocess.run(['bash',_workdir_, "server", "permission"])
 
 
