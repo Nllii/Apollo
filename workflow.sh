@@ -97,8 +97,8 @@ server_config(){
 
 commit(){
 	    if [[ "${1-}" =~ ^-*commiting?$ ]]; then
-			perform_task "commiting"
-			read -p "Enter commit message: " commit_message
+			perform_task "Enter your commit message"
+			read -p ":" commit_message
 			perform_task "commit message: $newline$commit_message"
 			git add .
 			git commit -m "$commit_message"
