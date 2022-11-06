@@ -98,11 +98,8 @@ server_config(){
 commit(){
 	    if [[ "${1-}" =~ ^-*commiting?$ ]]; then
 			perform_task "commiting"
-			END='\033[0m'
-			Yellow="\033[0;93m[x]"
-			# get input from the user
 			read -p "Enter commit message: " commit_message
-			warn "project commit: $newline$commit_message"
+			perform_task "commit message: $newline$commit_message"
 			git add .
 			git commit -m "$commit_message"
 			git push
