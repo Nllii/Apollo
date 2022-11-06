@@ -10,22 +10,23 @@
 - all scripts and programs are runing ubuntu 22.04 LTS on arm64
 
 ### Gettting started
-setup your path to have ./workflow/dev
-... I am using ~/.bashrc to add the path to the bashrc file.
+...
+NOTE: This creates a symbolic between this project and /usr/local/bin dir
+
 ```bash
 
 bash install.sh
+# to remove? re-run the script and delete this project.
 
 ```
+
+
 
 ### with 30 Mbps download speed you are looking at ETA of setup to be 1hr and fixing little errors and accepting updates/resets prompts.
 
 ### keep run runing the script until all downloads are done and Reboot your system before working on your code.
 
 - Happy hacking !
-
-
-
 
 - list of installations
     - python _ https://github.com/conda-forge/miniforge/
