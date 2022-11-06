@@ -20,25 +20,39 @@ def link_public_repo():
 
 
 
-def individual_install():
-
-	pass
-
 
 
 
 dev_task = ["commit ", "setup","help"].index(tuzue.navigate(["commit ", "setup","help"], "development task"))
+
 if dev_task == 0:
+	(...)
 	subprocess.run(['bash',_workdir_, "server", "commit","commiting"])
+
 elif dev_task == 1:
-    pass
+	server_install = ["- install all ", "- individual install","- only important stuff"].index(tuzue.navigate(["- install all ", "- individual install","- only important stuff"], "server install"))
+	if server_install == 0:
+		# (...)
+		subprocess.run(['bash',_workdir_, "server", "server_config","install_all"])
+	elif server_install == 1:
+		# (...)
+		individual_install = ["docker","portainer","github_cli","cockpit"].index(tuzue.navigate(["docker","portainer","github_cli","cockpit"], "individual task"))
+
+		# individual_install = individual_install()
+		subprocess.run(['bash',_workdir_, "server", "server_config","individual"])
+
+	elif server_install == 2:
+		(...)
+		subprocess.run(['bash',_workdir_, "server", "server_config","important"])
+
 elif dev_task == 2:
 	workflow_config = ["remove this script","give all access to folder"].index(tuzue.navigate(["remove this script","give all access to folder"], "remove this script ? "))
 	if workflow_config == 0:
+		(...)
 		subprocess.run(['bash',_install_])
 	elif workflow_config == 1:
+		(...)
 		subprocess.run(['bash',_workdir_, "server", "permission"])
-		pass
 
 
 
@@ -47,9 +61,4 @@ elif dev_task == 2:
 
 #     # if setup == "server":
 #     #     # using an index for quicker debugging
-#     #     server_install = ["install_all ", "individual install"].index(tuzue.navigate(["install_all ", "individual install"], "server install"))
-#     #     if server_install == 0:
-#     #         subprocess.run(['bash',workdir, "server", "server_config","install_all"])
-#     #     elif server_install == 1:
-#     #         subprocess.run(['bash',workdir, "server", "server_config","individual"])
 

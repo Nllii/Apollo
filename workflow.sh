@@ -66,8 +66,54 @@ perform_task() {
   printf "${tty_blue}==>${tty_bold} %s${tty_reset}\n" "$(shell_join "$@")"
 }
 
+# declare -a important=(
+# "docker"
+# "portainer"
+# "github_cli"
+# "cockpit"
+
+# )
+# important_=${#important[@]}
+# echo "installing the important stuff first"
+# # use for loop to read all values and indexes
+# for (( i=0; i<${important_}; i++ ));
+# do
+#   # check to see if its important with the .important file
+#   if [[ -f "$SERVER_DIR/services/${important[$i]}/.is_important" ]]; then
+#     if [[ -f "$SERVER_DIR/services/${important[$i]}/.enable" ]]; then
+#       echo -e $MAGENTA
+#       echo "${important[$i]} already enabled."
+#       echo -e $REST
+#     else
+#       echo -e $YELLOW
+#       echo "installing ${important[$i]}"
+#       make -s -C "$SERVER_DIR/services/${important[$i]}" is_script
+#       echo "adding .enabled to directory"
+#       make -s -C "$SERVER_DIR/services/${important[$i]}"
+#       echo -e $REST
+#     fi
+#   fi
+# done
 
 
+important_install(){
+	perform_task "installing the important stuff"
+	# use for loop to read all values and indexes
+	for (( i=0; i<${important_}; i++ ));
+	do
+		# check to see if its important with the .important file
+		if [[ -f "$project_dir/services/${important[$i]}/.is_important" ]]; then
+			if [[ -f "$project_dir/services/${important[$i]}/.enable" ]]; then
+				perform_task "${important[$i]} already enabled."
+			else
+				perform_task "enabling ${important[$i]}"
+				execute "$project_dir/services/${important[$i]}/enable.sh"
+			fi
+		else
+			perform_task "skipping ${important[$i]}"
+		fi
+	done
+}
 
 permission(){
 	current_dir=$(pwd)
@@ -114,15 +160,11 @@ commit(){
 
 
 
-
-
-
-
-
 if [[ $1 == "server" ]]; then
-    if [[ "${OS}" == "aDarwin" ]]
-    then
-        echo "$1 can only be config on Linux system not ${OS}"
+		# echo "${@:2}" "${@:3}" "${@:4}"
+		# if OS and command is server
+    if [[ "${OS}" == "Darwin" && "${@:3}" == "install_all" ]]; then
+        warn "this can only be used on Linux system not ${OS} - why not try the individual install"
         exit 0
         else
 				"${@:2}" "${@:3}"
