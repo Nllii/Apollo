@@ -5,6 +5,8 @@ set -u
 set -o errexit
 set -o nounset
 set -o pipefail
+newline=$'\n'
+
 project_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 OS="$(uname)"
 
@@ -98,13 +100,13 @@ commit(){
 			perform_task "commiting"
 			END='\033[0m'
 			Yellow="\033[0;93m[x]"
-			echo -e "${Yellow}Pushing project commit: \n$1${END}"
+			# get input from the user
+			read -p "Enter commit message: " commit_message
+			warn "project commit: $newline$commit_message"
 			git add .
-			git commit -m "$1"
+			git commit -m "$commit_message"
 			git push
-			echo -e "\n${Yellow}Commit message: $1${END}"
-
-
+			# warn "Pushed project commit:  $commit_message"
 		fi
 
 }
