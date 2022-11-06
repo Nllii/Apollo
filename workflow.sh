@@ -103,7 +103,6 @@ commit(){
 			git add .
 			git commit -m "$commit_message"
 			git push
-			# warn "Pushed project commit:  $commit_message"
 		fi
 
 }
