@@ -53,5 +53,5 @@ else
     
 fi
 
-/home/ubuntu/mambaforge/bin/python /home/ubuntu/workflow/send-notifications.py
+/home/ubuntu/mambaforge/bin/python /home/ubuntu/workflow/message.py
 sleep 10
