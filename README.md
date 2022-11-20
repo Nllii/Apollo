@@ -21,13 +21,6 @@ bash install.sh
 ```
 
 
-
-### with 30 Mbps download speed you are looking at ETA of setup to be 1hr and fixing little errors and accepting updates/resets prompts.
-
-### keep run runing the script until all downloads are done and Reboot your system before working on your code.
-
-- Happy hacking !
-
 - list of installations
     - python _ https://github.com/conda-forge/miniforge/
     - golang

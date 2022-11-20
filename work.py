@@ -11,12 +11,23 @@ def py_quirk():
     import this
 
 
+def deadlock():
+	pass
+
+
+
+def link_public_repo():
+
+    pass
+
+
+
+
+
 def link_private_repo():
     pass
 
 
-def link_public_repo():
-    pass
 
 
 
@@ -24,7 +35,6 @@ def link_public_repo():
 
 
 dev_task = ["commit ", "setup","help"].index(tuzue.navigate(["commit ", "setup","help"], "development task"))
-
 if dev_task == 0:
 	(...)
 	subprocess.run(['bash',_workdir_, "server", "commit","commiting"])
@@ -50,14 +60,5 @@ elif dev_task == 2:
 		subprocess.run(['bash',_install_])
 	elif workflow_config == 1:
 		subprocess.run(['bash',_workdir_, "server", "permission"])
-
-
-
-
-
-
-#     # if setup == "server":
-#     #     # using an index for quicker debugging
-
 
 
