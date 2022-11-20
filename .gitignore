@@ -4,3 +4,4 @@ networks
 .old_workflow
 tuzue
 dev.notification.yaml
+.vscode
