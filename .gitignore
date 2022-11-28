@@ -2,6 +2,7 @@ services/im_message/snikket/snikket.conf
 workflow-settings.toml
 networks
 .old_workflow
+workflow.old
 tuzue
 dev.notification.yaml
 .vscode
