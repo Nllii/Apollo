@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+
+set -o errexit
+set -o nounset
+set -o pipefail
+system_python=$(which python)
+project_path="$HOME/Apollo/task.py"
+FAIL () {
+    echo -e "\033[0;31m$1\033[0m"
+    exit 1
+}
+YELLOW () {
+    echo -e "\033[0;93m$1\033[0m"
+}
+
+
+
+# get current directory
+if [[ "${TRACE-0}" == "1" ]]; then
+    set -o xtrace
+fi
+
+# check if current dir is the same as the project path
+if [[ "$PWD" == "$HOME" ]]; then
+    YELLOW "can't call dev command script in $HOME"
+    exit 1
+fi
+
+
+
+$system_python $project_path
+# exit 0
