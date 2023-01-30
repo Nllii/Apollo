@@ -1,4 +1,3 @@
-# This is the default.
 development:  # for development
 development commands:
   - commit and push: bash scripts/development.sh commit push
