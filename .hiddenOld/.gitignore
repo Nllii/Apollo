@@ -5,3 +5,4 @@ networks
 workflow.old
 dev.notification.yaml
 .vscode
+.hiddenOld

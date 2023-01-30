@@ -1,0 +1,23 @@
+# This is the default.
+development:  # for development
+development commands:
+  - commit and push: bash scripts/development.sh commit push
+  - kill process: bash scripts/development.sh kill-process
+  - new project:
+  - setup server:
+  - help:
+
+new project:  # for new projects
+new project commands:
+  - React.js: npx create-react-app <project-directory>
+  - Next.js: npx create-next-app@latest
+
+setup server:  # for server setup
+setup server command:
+  - install_all: True
+
+
+help:  # for help commands
+help commands:
+  - remove scripts:
+  - give all access to folder: bash scripts/development.sh
