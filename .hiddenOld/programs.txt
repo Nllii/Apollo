@@ -1,3 +1,0 @@
-docker -  uninstall
-neofetch - uninstall
-immich - install

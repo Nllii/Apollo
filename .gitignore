@@ -6,3 +6,5 @@ workflow.old
 dev.notification.yaml
 .vscode
 .hiddenOld
+.deprecated/*
+.DS_Store
