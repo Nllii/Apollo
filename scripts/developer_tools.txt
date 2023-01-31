@@ -1,0 +1,7 @@
+docker: docker
+python: conda
+golang: go
+node: node
+npm: npm
+java: javac
+Rust: rustc

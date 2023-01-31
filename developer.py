@@ -1,11 +1,18 @@
 import os
 import re
 import yaml
-import tuzue # similar to input() but with a fuzzy search
+import tuzue  # fuzzy search menu
 import subprocess
+from secret_assistant import notification
 
-STOP_SCRIPT = False
+notification(message="testing notifications").info().send_mail()
+
+
+
+STOP_SCRIPT = True
 path = os.path.dirname(os.path.realpath(__file__)) + "/scripts/"
+
+
 def getfile():
     path = os.path.dirname(os.path.realpath(__file__))
     with open(path + "/default.yaml", "r") as f:
@@ -23,9 +30,37 @@ def init():
         quit()
 
 
-
 command = init()
-def run_script(script):
+def writefile(getList):
+	with open(path + "developer_tools.txt", "w") as f:
+		for i in getList:
+			for key, value in i.items():
+				if value is True or value is False:
+					f.write(f"{key}: {value}")
+					f.write("\n")
+				else:
+					f.write(f"{key}: {value}")
+					f.write("\n")
+	return True
+
+
+def getscript(selected):
+    label = []
+    _script = []
+    _run_ = [info for info in command if re.search(selected, info)].pop()
+    if _run_ in command:
+        for info in command[_run_]:
+            label.extend(info)
+            _script.append(info)
+    return _script
+
+
+def run_script(script,select=None):
+    # hardcoding this is not a good option... will have to fix this later
+    if select == "install all":
+        done = writefile(getscript("individual install"))
+        if done != True:
+            print("Error: Could not write to file")
     try:
         match = re.search(r"<(.*?)>", script)
         if match:
@@ -35,11 +70,32 @@ def run_script(script):
         subprocess.call(script, shell=True)
     except:
         print("Error: from run_script()... Check your config file for errors")
-	# run_script("npx create-react-app <project-directory>")
+
+
+
+
+
+
+
+def nextscreen(selected):
+    label = []
+    _script = []
+    _run_ = [info for info in command if re.search(selected, info)].pop()
+    if _run_ in command:
+        for info in command[_run_]:
+            label.extend(info)
+            _script.append(info)
+        _selection = label.index(
+            tuzue.navigate(label, selected.upper().center(50, "-"))
+        )
+        _selected = label.pop(_selection)
+        _Isexecute = _script[_selection][f"{_selected}"]
+        if _Isexecute == None:
+            return nextscreen(_selected)
+        return _selection, _selected, _Isexecute, _script
 
 
 def navigator(index=0, title=None):
-    # task  = []
     title = [info for info in command][index]
     bigger_text = title.upper().center(50, "-")
     label = []
@@ -52,25 +108,16 @@ def navigator(index=0, title=None):
                 for i in command[get]:
                     label.extend(i)
                     script.append(i)
-
-    selection = label.index(tuzue.navigate(label, bigger_text))
-    selected = label.pop(selection)
-    Isexecute = script[selection][f"{selected}"]
-    if Isexecute == None:
-        label.clear()
-        script.clear()
-        _run_ = [info for info in command if re.search(selected, info)].pop()
-        if _run_ in command:
-            for info in command[_run_]:
-                label.extend(info)
-                script.append(info)
-        _selection = label.index(tuzue.navigate(label, selected.upper().center(50, "-")))
-        _selected = label.pop(_selection)
-        _Isexecute = script[_selection][f"{_selected}"]
-        run_script(_Isexecute)
-    else:
-        run_script(Isexecute)
-
-
-
+    while True:
+        selection = label.index(tuzue.navigate(label, bigger_text))
+        selected = label.pop(selection)
+        excute = script[selection][f"{selected}"]
+        while excute == None:
+            _selection, _selected, _Isexecute, _script = nextscreen(selected)
+            excute = _script[_selection][f"{_selected}"]
+            selected = _selected
+            script = _script
+        else:
+            break
+    run_script(script=excute,select=selected)
 navigator()

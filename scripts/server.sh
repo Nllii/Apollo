@@ -57,19 +57,71 @@ abort() {
   printf "${tty_red}fail${tty_reset}: %s\n" "$(chomp "$1")"
   exit 0
 }
-abort_println() {
-  printf "${tty_red}performing${tty_reset}: %s\n" "$(chomp "$1")"
+failure() {
+  printf "${tty_red}failed${tty_reset}: %s\n" "$(chomp "$1")"
   # exit 0
 }
 perform_task() {
   printf "${tty_blue}==>${tty_bold} %s${tty_reset}\n" "$(shell_join "$@")"
 }
 
-
-
-
+checkOS() {
 if [[ "$OS" != "Linux" ]]; then
-    warn "${OS} is not completely supported yet"
-fi
+    warn "${OS} is not completely supported yet only Linux is supported"
+		# exit 0
 
+
+fi
+}
+
+
+install_all()
+{
+declare -a programs=()
+while read line; do
+  program=$(echo "$line" | awk -F ':' '{print $2}' | xargs)
+
+	if [ "$program" != "True" ] && [ "$program" != "False" ]; then
+			programs+=("$program")
+	fi
+done < $project_dir/developer_tools.txt
+
+isInstalled=${#programs[@]}
+for (( i=0; i<${isInstalled}; i++ ));
+do
+	if ! command -v "${programs[$i]}" &> /dev/null
+	then
+		failure "Did not find command $tty_yellow${programs[$i]}$tty_reset on your system"
+		else
+			perform_task "$tty_yellow${programs[$i]}$tty_reset is already on your system"
+	fi
+done
+
+
+}
+
+
+
+
+prevent_sudo() {
+	checkOS
+	getUsername=$(whoami)
+	sudo cp /etc/sudoers /etc/sudoers.bak
+	sudo bash -c "echo '$getUsername ALL=(ALL) NOPASSWD: ALL' | (EDITOR='tee -a' visudo)"
+	perform_task "sudo permission is removed"
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+"${@:1}" "${@:3}"
 
