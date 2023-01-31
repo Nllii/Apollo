@@ -1,4 +1,4 @@
-development:  # for development
+development:  # This is start of development and meun.
 
 development commands:
   - commit and push: bash scripts/development.sh commit push
@@ -41,7 +41,6 @@ individual install command:
   - Rust: rustc
 
 
-
 install containers:
 install containers commands:
   - portainer: https://github.com/portainer/portainer
@@ -54,6 +53,5 @@ install containers commands:
 
 help:  # for help commands
 help commands:
-
   - remove scripts: bash install.sh
   - All access chmod -R a+rwx * this directory: bash scripts/development.sh permission

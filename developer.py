@@ -3,15 +3,13 @@ import re
 import yaml
 import tuzue  # fuzzy search menu
 import subprocess
+import threading
 from secret_assistant import notification
-
-notification(message="testing notifications").info().send_mail()
-
+import queue
 
 
 STOP_SCRIPT = True
 path = os.path.dirname(os.path.realpath(__file__)) + "/scripts/"
-
 
 def getfile():
     path = os.path.dirname(os.path.realpath(__file__))
@@ -68,13 +66,9 @@ def run_script(script,select=None):
             folder = input(">>> ")
             script = script.replace(match.group(0), folder)
         subprocess.call(script, shell=True)
+        return select
     except:
         print("Error: from run_script()... Check your config file for errors")
-
-
-
-
-
 
 
 def nextscreen(selected):
@@ -94,8 +88,7 @@ def nextscreen(selected):
             return nextscreen(_selected)
         return _selection, _selected, _Isexecute, _script
 
-
-def navigator(index=0, title=None):
+def navigator(q=None, index=0, title=None):
     title = [info for info in command][index]
     bigger_text = title.upper().center(50, "-")
     label = []
@@ -119,5 +112,21 @@ def navigator(index=0, title=None):
             script = _script
         else:
             break
-    run_script(script=excute,select=selected)
-navigator()
+    return selected, excute
+    # q.put((selected, excute))
+
+
+
+
+selected, excute = navigator()
+if selected:
+	q = queue.Queue()
+	start = notification(f"task run: {str(selected).upper()}")
+	nav_thread = threading.Thread(target=start.sendmessage)
+	nav_thread.start()
+	# result = q.get(block=False)
+	run_script(script=excute,select=selected)
+	nav_thread.join()
+
+
+
