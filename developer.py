@@ -10,12 +10,12 @@ import queue
 
 STOP_SCRIPT = True
 path = os.path.dirname(os.path.realpath(__file__)) + "/scripts/"
+notifiy_path = os.path.dirname(os.path.realpath(__file__)) + "/dev.notification.yaml"
 
 def getfile():
     path = os.path.dirname(os.path.realpath(__file__))
     with open(path + "/default.yaml", "r") as f:
         return yaml.full_load(f)
-
 
 def init():
     try:
@@ -53,6 +53,21 @@ def getscript(selected):
     return _script
 
 
+def fix_scriptpaths(command):
+    init_command = command
+    getInit = init_command[: init_command.index(" ") + 1]
+    path = os.path.dirname(os.path.realpath(__file__))
+    command = command[command.index(" ")+1:]
+    if path not in command:
+        _command =  f"{getInit}/{path}/{command}"
+        return _command
+    else:
+        return command
+
+
+
+
+
 def run_script(script,select=None):
     # hardcoding this is not a good option... will have to fix this later
     if select == "install all":
@@ -65,7 +80,8 @@ def run_script(script,select=None):
             print("Enter a folder or project name or . :", match.group(0))
             folder = input(">>> ")
             script = script.replace(match.group(0), folder)
-        subprocess.call(script, shell=True)
+        comand = fix_scriptpaths(script)
+        subprocess.call(comand, shell=True)
         return select
     except:
         print("Error: from run_script()... Check your config file for errors")
@@ -121,7 +137,7 @@ def navigator(q=None, index=0, title=None):
 selected, excute = navigator()
 if selected:
 	q = queue.Queue()
-	start = notification(f"task run: {str(selected).upper()}")
+	start = notification(file=notifiy_path,message=f"task run: {str(selected).upper()}")
 	nav_thread = threading.Thread(target=start.sendmessage)
 	nav_thread.start()
 	# result = q.get(block=False)
