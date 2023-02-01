@@ -13,19 +13,6 @@ bash install.sh
 
 ```
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 in ```default.yaml``` file, follow this format
 
 ```yaml
@@ -60,32 +47,3 @@ help commands:
 
 
 
-
-
-
-Release notes and TODOs:
-
-- v0.0.3
-	- using yaml for config
-
-
-
-- v0.0.2
-    - updating menu to use https://github.com/lpenz/tuzue
-    - using /usr/local/bin for executables
-    - Change name to Apollo.
-
-- v0.0.1
-    - using makefile(s)
-    - fix some issues with toml and javascript - can't return value from toml
-    - installing the important stuff first.
-    - Added showcase gif
-
-
-- v0.0.0
-    - Added commit project
-    - Added github support
-    - Add start django server
-    - Added Docker script
-    - Added Portainer
-    - Add golang
