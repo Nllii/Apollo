@@ -136,13 +136,20 @@ def navigator(q=None, index=0, title=None):
 
 selected, excute = navigator()
 if selected:
-	q = queue.Queue()
-	start = notification(file=notifiy_path,message=f"task run: {str(selected).upper()}")
-	nav_thread = threading.Thread(target=start.sendmessage)
-	nav_thread.start()
+    try:
+        q = queue.Queue()
+        start = notification(file=notifiy_path,message=f"task run: {str(selected).upper()}")
+        start.sendmessage()
+    except Exception as e:
+        if e.args[0]:
+            print("notification file not found or there is an error in the file")
+        else:
+            nav_thread = threading.Thread(target=start.sendmessage)
+            nav_thread.start()
+            
 	# result = q.get(block=False)
-	run_script(script=excute,select=selected)
-	nav_thread.join()
+    run_script(script=excute,select=selected)
+    nav_thread.join()
 
 
 
