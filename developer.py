@@ -133,23 +133,29 @@ def navigator(q=None, index=0, title=None):
 
 
 
+try:   
+    quickcheck = notification().__init__(file=notifiy_path)
+    if quickcheck == None:
+        is_notificaiton = False
+    else:
+        is_notificaiton = True
+except Exception as e:
+    pass
 
 selected, excute = navigator()
 if selected:
     try:
-        q = queue.Queue()
-        start = notification(file=notifiy_path,message=f"task run: {str(selected).upper()}")
-        start.sendmessage()
-    except Exception as e:
-        if e.args[0]:
-            print("notification file not found or there is an error in the file")
-        else:
+        if is_notificaiton == True:
+            q = queue.Queue()
+            start = notification(file=notifiy_path,message=f"task run: {str(selected).upper()}")
             nav_thread = threading.Thread(target=start.sendmessage)
             nav_thread.start()
-            
-	# result = q.get(block=False)
-        run_script(script=excute,select=selected)
-        nav_thread.join()
+            run_script(script=excute,select=selected)
+            nav_thread.join()
+        else:
+            run_script(script=excute,select=selected)
+    except Exception as e:
+        print("Error: from main()... Check your config file for errors")
 
 
 
