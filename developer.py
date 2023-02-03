@@ -148,7 +148,6 @@ if selected:
             nav_thread.start()
             
 	# result = q.get(block=False)
-    finally:
         run_script(script=excute,select=selected)
         nav_thread.join()
 

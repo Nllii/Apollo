@@ -17,7 +17,8 @@ in ```default.yaml``` file, follow this format
 
 ```yaml
 
-development:  # for development
+development:  # This is start of development and meun.
+
 development commands:
   - commit and push: bash scripts/development.sh commit push
   - kill process: bash scripts/development.sh kill-process
@@ -25,20 +26,54 @@ development commands:
   - setup server:
   - help:
 
+
+
 new project:  # for new projects
 new project commands:
   - React.js: npx create-react-app <project-directory>
   - Next.js: npx create-next-app@latest
 
+
+
+
 setup server:  # for server setup
 setup server command:
-  - install_all: True
+  - developement tools:
+  - disable sudo requirements: bash scripts/server.sh prevent_sudo
+
+
+developement tools:  # for server setup
+developement tools commands:
+  - install containers :
+  - install all: bash scripts/server.sh install_all
+  - individual install:
+
+
+individual install:  # for server setup
+individual install command:
+  - docker: docker
+  - python: conda
+  - golang: go
+  - node: node
+  - npm:  npm
+  - java: javac
+  - Rust: rustc
+
+
+install containers:
+install containers commands:
+  - portainer: https://github.com/portainer/portainer
+  - docker: https://www.docker.com || _ https://download.docker.com/linux
+  - jellyfin: https://github.com/jellyfin/jellyfin
+  - cockpit-project:  https://cockpit-project.org
+  - libreddit: https://github.com/spikecodes/libreddit
+
 
 
 help:  # for help commands
 help commands:
-  - remove scripts:
-  - give all access to folder: bash scripts/development.sh
+  - remove scripts: bash install.sh
+  - All access chmod -R a+rwx * this directory: bash scripts/development.sh permission
 
 ```
 
