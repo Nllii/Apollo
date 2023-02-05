@@ -1,0 +1,14 @@
+[Unit]
+Description=sends an email when server is online,sends notification to mac os also.
+After=network-online.target
+
+[Service]
+Type=idle
+Restart=always
+RestartSec=30
+WorkingDirectory= /home/ubuntu/Apollo/
+
+ExecStart=/bin/bash /home/ubuntu/Apollo/scripts/alert.sh online
+
+[Install]
+WantedBy=network-online.target

@@ -64,5 +64,5 @@ settings commands:
   - enable mac os notification: True
   - add ip address: bash scripts/alert.sh alert
   - is online: bash scripts/alert.sh online
-  - send logs: None
+  - swap-network: bash scripts/alert.sh swap
 
