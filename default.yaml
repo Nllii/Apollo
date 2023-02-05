@@ -55,3 +55,7 @@ help:  # for help commands
 help commands:
   - remove scripts: bash install.sh
   - All access chmod -R a+rwx * this directory: bash scripts/development.sh permission
+
+
+
+# Path: scripts/development.sh

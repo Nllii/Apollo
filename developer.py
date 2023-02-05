@@ -4,6 +4,7 @@ import yaml
 import tuzue  # fuzzy search menu
 import subprocess
 import threading
+from helper import notify
 from secret_assistant import notification
 import queue
 
