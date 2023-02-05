@@ -1,12 +1,12 @@
 import os
 import re
 import yaml
-import tuzue  # fuzzy search menu
+import tuzue  # Please install tuzue or - pip install -r requirements.txt
 import subprocess
 import threading
-from helper import notify
-from secret_assistant import notification
+from secret_assistant import notification # Please install secret_assistant or - pip install -r requirements.txt
 import queue
+
 
 
 STOP_SCRIPT = True
@@ -14,6 +14,7 @@ path = os.path.dirname(os.path.realpath(__file__)) + "/scripts/"
 notifiy_path = os.path.dirname(os.path.realpath(__file__)) + "/dev.notification.yaml"
 
 def getfile():
+
     path = os.path.dirname(os.path.realpath(__file__))
     with open(path + "/default.yaml", "r") as f:
         return yaml.full_load(f)
@@ -133,8 +134,8 @@ def navigator(q=None, index=0, title=None):
     # q.put((selected, excute))
 
 
+try:
 
-try:   
     quickcheck = notification().__init__(file=notifiy_path)
     if quickcheck == None:
         is_notificaiton = False
