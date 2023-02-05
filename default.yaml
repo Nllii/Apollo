@@ -6,6 +6,7 @@ development commands:
   - new project:
   - setup server:
   - help:
+  - settings:
 
 
 
@@ -55,7 +56,12 @@ help:  # for help commands
 help commands:
   - remove scripts: bash install.sh
   - All access chmod -R a+rwx * this directory: bash scripts/development.sh permission
+  - speed test: curl -s https://raw.githubusercontent.com/sivel/speedtest-cli/master/speedtest.py | python -
 
 
+settings:
+settings commands:
+  - enable mac os notification: True
+  - add ip address: True
 
-# Path: scripts/development.sh
+

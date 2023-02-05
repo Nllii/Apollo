@@ -1,8 +1,15 @@
 #!/bin/bash
 project_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 local_host_name=$(hostname)
-
 set -u
+
+
+
+
+
+
+
+
 declare -a address=()
 
 alert()
@@ -26,7 +33,7 @@ function send_alert() {
   alert | while read line
   do
     server=$line
-    host_name=$(ssh admin@$server "hostname") 
+    host_name=$(ssh admin@$server "hostname")
 
     # message="message from ubuntu, server is online."
     command="/Users/admin/Apollo/macos_notifier.sh"
@@ -46,7 +53,28 @@ function send_alert() {
     fi
   done
 }
+
+# I will not check for duplicated entries.
+# set a command to run a function.
+if [[ $1=="alert" ]]; then
+	echo ""
+	read -p 'Enter the IP address to add to list: ' commit
+	if [ ! -d "$project_dir/ip_address.txt" ] ; then
+		echo $commit >> $project_dir/ip_address.txt
+		exit 0
+
+	else
+		echo "cant not find ip_address.txt, $project_dir/ip_address.txt."
+		exit 1
+	fi
+fi
+
+
+
+
 send_alert $1 >> $project_dir/log.txt
+
+
 
 
 

@@ -7,8 +7,6 @@ import threading
 from secret_assistant import notification # Please install secret_assistant or - pip install -r requirements.txt
 import queue
 
-
-
 STOP_SCRIPT = True
 path = os.path.dirname(os.path.realpath(__file__)) + "/scripts/"
 notifiy_path = os.path.dirname(os.path.realpath(__file__)) + "/dev.notification.yaml"
@@ -135,8 +133,8 @@ def navigator(q=None, index=0, title=None):
 
 
 try:
-
-    quickcheck = notification().__init__(file=notifiy_path)
+    quickcheck = False
+    # quickcheck = notification().__init__(file=notifiy_path)
     if quickcheck == None:
         is_notificaiton = False
     else:
