@@ -63,6 +63,6 @@ settings:
 settings commands:
   - enable mac os notification: True
   - add ip address: bash /scripts/alert.sh alert
-  - is online: bash /scripts/macos_notifier.sh is-online
+  - is online: bash bash /scripts/alert.sh
   - send logs: None
 
