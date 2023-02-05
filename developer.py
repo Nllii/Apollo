@@ -133,7 +133,7 @@ def navigator(q=None, index=0, title=None):
 
 
 try:
-    quickcheck = False
+    quickcheck = None
     # quickcheck = notification().__init__(file=notifiy_path)
     if quickcheck == None:
         is_notificaiton = False

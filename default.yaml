@@ -62,6 +62,6 @@ help commands:
 settings:
 settings commands:
   - enable mac os notification: True
-  - add ip address: True
+  - add ip address: bash /scripts/alert.sh alert
 
 
