@@ -1,17 +1,3 @@
-ssh: Could not resolve hostname 1233.333.333: nodename nor servname provided, or not known
-ssh: Could not resolve hostname 1233.333.333: nodename nor servname provided, or not known
-online
-
-
-
-online
-testing
-testing
-testing
-testing
-testing
-testing
--alert
--alert
-alert
-alert
+server online   @Sun Feb  5 03:29:50 CST 2023
+server online   @Sun Feb  5 03:30:33 CST 2023
+server online   @Sun Feb  5 03:31:08 CST 2023
