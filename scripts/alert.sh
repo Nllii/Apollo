@@ -26,7 +26,7 @@ function send_alert() {
   alert | while read line
   do
     server=$line
-    host_name=$(ssh admin@$server "hostname")
+    host_name=$(ssh admin@$server "hostname") 
 
     # message="message from ubuntu, server is online."
     command="/Users/admin/Apollo/macos_notifier.sh"
@@ -34,6 +34,7 @@ function send_alert() {
     # hello $local_host_name $line, $local_host_name is $1
 
     result=$(ssh admin@$server "$command "$host_name $line $local_host_name $1"")
+		# echo $result
 
     # Check the result and take action based on the result
     if [ "$result" == "0" ]; then
@@ -45,8 +46,7 @@ function send_alert() {
     fi
   done
 }
-
-send_alert $1 &>> $project_dir/log.txt
+send_alert $1 >> $project_dir/log.txt
 
 
 
